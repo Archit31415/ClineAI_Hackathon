@@ -1,0 +1,22 @@
+{
+  "id": "pmfby_loss_intimation",
+  "scheme_id": "pmfby",
+  "title": "PMFBY localized loss intimation (draft — not submitted anywhere)",
+  "source": { "url": "https://pmfby.gov.in", "verified_on": "TODO_VERIFY" },
+  "fields": [
+    { "key": "farmer_name", "label": "Farmer name", "type": "string", "required": true, "from": "name" },
+    { "key": "state", "label": "State", "type": "string", "required": true, "from": "state" },
+    { "key": "district", "label": "District", "type": "string", "required": true, "from": "district" },
+    { "key": "village", "label": "Village", "type": "string", "required": false },
+    { "key": "crop", "label": "Crop", "type": "string", "required": true, "from": "crops.0" },
+    { "key": "season", "label": "Season", "type": "enum", "options": ["kharif", "rabi", "zaid"], "required": true, "from": "season" },
+    { "key": "cause_of_loss", "label": "Cause of loss", "type": "enum", "options": ["hail", "flood", "drought", "pest", "other"], "required": true, "from": "loss_event.type" },
+    { "key": "date_of_loss", "label": "Date of loss", "type": "date", "required": true, "from": "loss_event.occurred_at", "validate": "not_future" },
+    { "key": "area_affected_ha", "label": "Area affected (ha)", "type": "number", "required": true, "from": "land_hectares", "validate": "positive" },
+    { "key": "survey_number", "label": "Survey / khasra / dag number", "type": "string", "required": true, "validate": "survey_number" },
+    { "key": "bank_ifsc", "label": "Bank IFSC", "type": "string", "required": false, "validate": "ifsc" },
+    { "key": "insured_through", "label": "Insured through (bank/CSC/self)", "type": "string", "required": false },
+    { "key": "evidence_photo_count", "label": "Evidence photos attached", "type": "number", "required": false, "from": "_evidence_count" }
+  ],
+  "required_documents": ["land_record", "bank_passbook", "sowing_certificate", "loss_photos"]
+}

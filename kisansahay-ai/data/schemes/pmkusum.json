@@ -1,0 +1,29 @@
+{
+  "id": "pmkusum",
+  "name": { "en": "PM-KUSUM (solar pumps)", "hi": "पीएम-कुसुम (सोलर पंप)", "as": "পিএম-কুসুম (সৌৰ পাম্প)" },
+  "benefit_summary": {
+    "en": "Subsidy for standalone solar pumps and solarising grid pumps (central + state share; verify farmer contribution).",
+    "hi": "स्टैंडअलोन सोलर पंप और ग्रिड पंप सोलराइज़ेशन पर सब्सिडी (केंद्र + राज्य हिस्सा; किसान अंशदान सत्यापित करें)।",
+    "as": "ষ্টেণ্ডএল'ন সৌৰ পাম্প আৰু গ্ৰিড পাম্প সৌৰকৰণত ৰাজসাহায্য (কেন্দ্ৰ + ৰাজ্যৰ অংশ; কৃষকৰ অৱদান পৰীক্ষা কৰক)।"
+  },
+  "source": { "url": "https://pmkusum.mnre.gov.in", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["irrigation", "equipment"],
+  "eligibility": {
+    "all": [
+      { "field": "cultivates", "op": "eq", "value": true,
+        "label": { "en": "You are a farmer", "hi": "आप किसान हैं", "as": "আপুনি কৃষক" } },
+      { "field": "land_hectares", "op": "gte", "value": 0.2, "soft": true,
+        "label": { "en": "Land is large enough to install a pump", "hi": "पंप लगाने के लिए पर्याप्त भूमि", "as": "পাম্প বহুৱাবলৈ যথেষ্ট মাটি" } }
+    ]
+  },
+  "documents": ["aadhaar", "land_record", "bank_passbook"],
+  "stacks_with": [],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Apply on the state PM-KUSUM portal when the window opens", "hi": "विंडो खुलने पर राज्य पीएम-कुसुम पोर्टल पर आवेदन करें", "as": "সময়সীমা খুলিলে ৰাজ্যৰ পিএম-কুসুম প'ৰ্টেলত আবেদন কৰক" },
+    "kind": "visit", "link": "https://pmkusum.mnre.gov.in"
+  }
+}

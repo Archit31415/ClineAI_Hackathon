@@ -1,0 +1,53 @@
+{
+  "_note": "Illustrative catalog; verify with the state animal husbandry department. Triage only, never drug doses.",
+  "feature_vocab": {
+    "fever": { "en": "Fever / hot body", "hi": "बुखार / शरीर गर्म", "as": "জ্বৰ / গা গৰম" },
+    "skin_nodules": { "en": "Lumps / nodules on skin", "hi": "त्वचा पर गांठें", "as": "ছালত গুটি" },
+    "not_eating": { "en": "Not eating", "hi": "खाना नहीं खा रहा", "as": "খোৱা নাই" },
+    "reduced_milk": { "en": "Milk reduced", "hi": "दूध कम", "as": "গাখীৰ কম" },
+    "cannot_stand": { "en": "Cannot stand", "hi": "खड़ा नहीं हो पा रहा", "as": "থিয় হ'ব পৰা নাই" },
+    "bloody_discharge": { "en": "Bloody discharge", "hi": "खूनी स्राव", "as": "তেজমিহলি নিঃসৰণ" },
+    "udder_swelling": { "en": "Swollen / hard udder", "hi": "थन में सूजन / कड़ापन", "as": "উধান ফুলা / টান" },
+    "milk_change": { "en": "Clots / watery / bloody milk", "hi": "दूध में थक्के / पानी जैसा / खून", "as": "গাখীৰত দলা / পানীৰ দৰে / তেজ" },
+    "bloated_left_abdomen": { "en": "Bloated belly (left side)", "hi": "पेट फूला (बाईं ओर)", "as": "পেট ফুলা (বাওঁফাল)" },
+    "sudden_death_herd": { "en": "Sudden death in herd", "hi": "झुंड में अचानक मौत", "as": "জাকত হঠাৎ মৃত্যু" },
+    "mouth_blisters": { "en": "Blisters in mouth / drooling", "hi": "मुँह में छाले / लार", "as": "মুখত ফোঁহা / লাল" },
+    "foot_lesions": { "en": "Foot sores / limping", "hi": "खुर में घाव / लंगड़ाना", "as": "খুৰাত ঘা / খোৰা" },
+    "diarrhoea": { "en": "Loose dung / diarrhoea", "hi": "पतला गोबर / दस्त", "as": "পাতল গোবৰ / পেটৰ অসুখ" },
+    "cough_nasal_discharge": { "en": "Cough / nasal discharge", "hi": "खाँसी / नाक बहना", "as": "কাহ / নাকৰ পানী" }
+  },
+  "red_flags": [
+    { "id": "cannot_stand", "features": ["cannot_stand"], "text": { "en": "Animal cannot stand", "hi": "पशु खड़ा नहीं हो पा रहा", "as": "পশুটো থিয় হ'ব পৰা নাই" } },
+    { "id": "bloody_discharge", "features": ["bloody_discharge"], "text": { "en": "Bloody discharge", "hi": "खूनी स्राव", "as": "তেজমিহলি নিঃসৰণ" } },
+    { "id": "fever_nodules", "features": ["fever", "skin_nodules"], "notifiable": true, "isolate": true, "text": { "en": "Fever with skin nodules", "hi": "बुखार के साथ त्वचा पर गांठें", "as": "জ্বৰৰ সৈতে ছালত গুটি" } },
+    { "id": "skin_nodules", "features": ["skin_nodules"], "notifiable": true, "isolate": true, "_why": "Nodules alone can be lumpy skin disease (notifiable); a photo cannot show fever, so do not wait for it. TODO_VERIFY against state animal-husbandry guidance.", "text": { "en": "Lumps / nodules on the skin (possible lumpy skin disease)", "hi": "त्वचा पर गांठें (लम्पी स्किन रोग हो सकता है)", "as": "ছালত গুটি (লাম্পি স্কিন ৰোগ হ'ব পাৰে)" } },
+    { "id": "udder_milk", "features": ["udder_swelling", "milk_change"], "text": { "en": "Swollen udder with milk change", "hi": "थन में सूजन और दूध में बदलाव", "as": "উধান ফুলা আৰু গাখীৰৰ পৰিৱৰ্তন" } },
+    { "id": "bloat", "features": ["bloated_left_abdomen"], "text": { "en": "Bloated abdomen", "hi": "पेट फूलना", "as": "পেট ফুলা" } },
+    { "id": "sudden_death", "features": ["sudden_death_herd"], "notifiable": true, "isolate": true, "text": { "en": "Sudden death in the herd", "hi": "झुंड में अचानक मौत", "as": "জাকত হঠাৎ মৃত্যু" } },
+    { "id": "fmd_signs", "features": ["mouth_blisters", "foot_lesions"], "notifiable": true, "isolate": true, "text": { "en": "Mouth blisters with foot sores", "hi": "मुँह के छाले और खुर के घाव", "as": "মুখৰ ফোঁহা আৰু খুৰাৰ ঘা" } }
+  ],
+  "entries": [
+    { "id": "lsd", "species": ["cattle", "buffalo"], "name": { "en": "Lumpy skin disease (suspected)", "hi": "लम्पी स्किन रोग (संभावित)", "as": "লাম্পি স্কিন ৰোগ (সন্দেহজনক)" },
+      "features": { "skin_nodules": 3, "fever": 2, "reduced_milk": 1, "not_eating": 1 }, "advisory_source": { "label": "DAHD LSD advisory (VERIFY)", "url": "https://dahd.gov.in" } },
+    { "id": "fmd", "species": ["cattle", "buffalo", "goat"], "name": { "en": "Foot-and-mouth disease (suspected)", "hi": "खुरपका-मुँहपका (संभावित)", "as": "খুৰা-মুখ ৰোগ (সন্দেহজনক)" },
+      "features": { "mouth_blisters": 3, "foot_lesions": 3, "fever": 1, "reduced_milk": 1 }, "advisory_source": { "label": "DAHD FMD advisory (VERIFY)", "url": "https://dahd.gov.in" } },
+    { "id": "mastitis", "species": ["cattle", "buffalo", "goat"], "name": { "en": "Mastitis (suspected)", "hi": "थनैला (संभावित)", "as": "উধান ৰোগ (সন্দেহজনক)" },
+      "features": { "udder_swelling": 3, "milk_change": 3, "fever": 1 } },
+    { "id": "bloat", "species": ["cattle", "buffalo", "goat"], "name": { "en": "Bloat (suspected)", "hi": "अफारा (संभावित)", "as": "পেট ফুলা (সন্দেহজনক)" },
+      "features": { "bloated_left_abdomen": 3, "not_eating": 1 } },
+    { "id": "hs", "species": ["cattle", "buffalo"], "name": { "en": "Haemorrhagic septicaemia (suspected)", "hi": "गलघोंटू (संभावित)", "as": "গলফুলা (সন্দেহজনক)" },
+      "features": { "fever": 2, "cough_nasal_discharge": 2, "sudden_death_herd": 2, "not_eating": 1 } },
+    { "id": "digestive_upset", "species": ["cattle", "buffalo", "goat", "poultry", "other"], "name": { "en": "Digestive upset (possible)", "hi": "पाचन गड़बड़ी (संभव)", "as": "হজমৰ সমস্যা (সম্ভাৱ্য)" },
+      "features": { "diarrhoea": 3, "not_eating": 1 } }
+  ],
+  "advice": {
+    "do_now_base": [ { "en": "Give clean drinking water and shade; keep the animal calm", "hi": "साफ़ पानी और छाया दें; पशु को शांत रखें", "as": "পৰিষ্কাৰ পানী আৰু ছাঁ দিয়ক; পশুটো শান্ত ৰাখক" } ],
+    "do_now_isolate": [ { "en": "Separate from the herd; keep separate feed and water", "hi": "झुंड से अलग करें; चारा-पानी अलग रखें", "as": "জাকৰ পৰা আঁতৰাওক; খাদ্য-পানী সুকীয়াকৈ ৰাখক" } ],
+    "do_now_notifiable": [ { "en": "This may be a notifiable disease: inform the veterinary officer today", "hi": "यह अधिसूचित रोग हो सकता है: आज ही पशु चिकित्सा अधिकारी को सूचित करें", "as": "এইটো জাননীযোগ্য ৰোগ হ'ব পাৰে: আজিয়েই পশু চিকিৎসা বিষয়াক জনাওক" } ],
+    "do_now_vet": [ { "en": "Call a veterinarian now", "hi": "अभी पशु चिकित्सक को बुलाएँ", "as": "এতিয়াই পশু চিকিৎসকক মাতক" } ],
+    "do_not": [
+      { "en": "Do not give human medicines or unverified remedies", "hi": "इंसानों की दवा या बिना जाँचे नुस्खे न दें", "as": "মানুহৰ ঔষধ বা পৰীক্ষা নকৰা নিদান নিদিব" },
+      { "en": "Do not sell milk or move the animal to markets until a vet advises", "hi": "पशु चिकित्सक की सलाह तक दूध न बेचें, पशु बाज़ार न ले जाएँ", "as": "চিকিৎসকৰ পৰামৰ্শ নোপোৱালৈ গাখীৰ বিক্ৰী নকৰিব, পশু বজাৰলৈ নিনিব" }
+    ]
+  }
+}

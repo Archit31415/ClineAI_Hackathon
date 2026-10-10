@@ -1,0 +1,31 @@
+{
+  "id": "pkvy",
+  "name": { "en": "PKVY (organic farming clusters)", "hi": "पीकेवीवाई (जैविक खेती क्लस्टर)", "as": "পিকেভিৱাই (জৈৱিক খেতি ক্লাষ্টাৰ)" },
+  "benefit_summary": {
+    "en": "Support for organic farming in farmer clusters, including inputs, certification and marketing (verify per-hectare amount).",
+    "hi": "किसान क्लस्टर में जैविक खेती के लिए सहायता — इनपुट, प्रमाणन और विपणन (प्रति हेक्टेयर राशि सत्यापित करें)।",
+    "as": "কৃষক ক্লাষ্টাৰত জৈৱিক খেতিৰ বাবে সাহায্য — সামগ্ৰী, প্ৰমাণীকৰণ আৰু বিপণন (প্ৰতি হেক্টৰ পৰিমাণ পৰীক্ষা কৰক)।"
+  },
+  "source": { "url": "https://pgsindia-ncof.gov.in/pkvy", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["organic", "soil", "crop_loss"],
+  "eligibility": {
+    "all": [
+      { "field": "cultivates", "op": "eq", "value": true,
+        "label": { "en": "You are a farmer", "hi": "आप किसान हैं", "as": "আপুনি কৃষক" } },
+      { "field": "in_cluster_group", "op": "eq", "value": true,
+        "label": { "en": "You are in (or can join) a farmer cluster group", "hi": "आप किसी किसान क्लस्टर समूह में हैं (या जुड़ सकते हैं)", "as": "আপুনি কৃষক ক্লাষ্টাৰ গোটত আছে (বা যোগ দিব পাৰে)" } }
+    ]
+  },
+  "documents": ["aadhaar", "land_record", "bank_passbook", "cluster_membership"],
+  "stacks_with": [
+    { "id": "pmfby", "note": { "en": "Organic cluster support can run alongside crop insurance.", "hi": "जैविक क्लस्टर सहायता फसल बीमा के साथ चल सकती है।", "as": "জৈৱিক ক্লাষ্টাৰ সাহায্য শস্য বীমাৰ সৈতে চলিব পাৰে।" } }
+  ],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Ask the block agriculture office about joining a PKVY cluster", "hi": "PKVY क्लस्टर से जुड़ने के बारे में ब्लॉक कृषि कार्यालय से पूछें", "as": "PKVY ক্লাষ্টাৰত যোগ দিয়াৰ বিষয়ে ব্লক কৃষি কাৰ্যালয়ক সোধক" },
+    "kind": "visit", "link": "https://pgsindia-ncof.gov.in"
+  }
+}

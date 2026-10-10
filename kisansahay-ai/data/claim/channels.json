@@ -1,0 +1,17 @@
+{
+  "_note": "Every channel value MUST be verified against pmfby.gov.in / the state agriculture department before showing to farmers. Unverified values render as 'verify before use'.",
+  "report_window_hours": { "hail": 72, "flood": 72, "other": 72, "pest": 72, "drought": 0 },
+  "report_window_source": { "label": "PMFBY operational guidelines (localized calamities; commonly cited 72 h)", "url": "https://pmfby.gov.in", "verified_on": "TODO_VERIFY" },
+  "channels": [
+    { "id": "app", "label": { "en": "Crop Insurance app (report 'crop loss')", "hi": "क्रॉप इंश्योरेंस ऐप ('फसल नुकसान' दर्ज करें)", "as": "ক্ৰপ ইনচিঅ'ৰেন্স এপ ('শস্য ক্ষতি' দাখিল কৰক)" }, "value": "Google Play: 'Crop Insurance' (Govt. of India) — VERIFY", "verified_on": "TODO_VERIFY" },
+    { "id": "helpline", "label": { "en": "PMFBY / Krishi Rakshak helpline", "hi": "PMFBY / कृषि रक्षक हेल्पलाइन", "as": "PMFBY / কৃষি ৰক্ষক হেল্পলাইন" }, "value": "VERIFY_BEFORE_SHOWING", "verified_on": "TODO_VERIFY" },
+    { "id": "bank", "label": { "en": "Your bank branch (if insured via KCC/loan)", "hi": "आपकी बैंक शाखा (यदि KCC/ऋण से बीमित)", "as": "আপোনাৰ বেংক শাখা (যদি KCC/ঋণৰ জৰিয়তে বীমাকৃত)" }, "value": "Visit or call your branch", "verified_on": "n/a" },
+    { "id": "agri_office", "label": { "en": "Block / district agriculture office", "hi": "ब्लॉक / ज़िला कृषि कार्यालय", "as": "ব্লক / জিলা কৃষি কাৰ্যালয়" }, "value": "Visit in person with photos", "verified_on": "n/a" }
+  ],
+  "evidence_shots": [
+    { "shot_type": "wide", "label": { "en": "Wide photo of the whole field", "hi": "पूरे खेत की चौड़ी फ़ोटो", "as": "গোটেই পথাৰৰ বহল ফটো" } },
+    { "shot_type": "close", "label": { "en": "Close-up of damaged plants", "hi": "क्षतिग्रस्त पौधों की नज़दीकी फ़ोटो", "as": "ক্ষতিগ্ৰস্ত গছৰ ওচৰৰ ফটো" } },
+    { "shot_type": "other", "label": { "en": "Second damaged spot in the field", "hi": "खेत में दूसरी क्षतिग्रस्त जगह", "as": "পথাৰৰ দ্বিতীয় ক্ষতিগ্ৰস্ত ঠাই" } },
+    { "shot_type": "boundary", "label": { "en": "Boundary landmark (bund, tree, pole)", "hi": "सीमा चिह्न (मेड़, पेड़, खंभा)", "as": "সীমাৰ চিন (আলি, গছ, খুঁটা)" } }
+  ]
+}

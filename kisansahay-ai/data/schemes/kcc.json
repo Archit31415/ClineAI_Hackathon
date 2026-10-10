@@ -1,0 +1,36 @@
+{
+  "id": "kcc",
+  "name": { "en": "Kisan Credit Card (KCC)", "hi": "किसान क्रेडिट कार्ड (KCC)", "as": "কিষাণ ক্ৰেডিট কাৰ্ড (KCC)" },
+  "benefit_summary": {
+    "en": "Short-term crop credit at a subsidised interest rate (commonly cited ~4% with prompt repayment; verify). Also covers animal husbandry and fisheries.",
+    "hi": "रियायती ब्याज पर अल्पकालिक फसल ऋण (समय पर चुकाने पर आमतौर पर ~4%; सत्यापित करें)। पशुपालन और मत्स्य पालन भी शामिल।",
+    "as": "ৰেহাই সুতত চুটিম্যাদী শস্য ঋণ (সময়মতে পৰিশোধ কৰিলে সাধাৰণতে ~৪%; পৰীক্ষা কৰক)। পশুপালন আৰু মীন পালনো সামৰি লয়।"
+  },
+  "source": { "url": "https://www.myscheme.gov.in/schemes/kcc", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["credit", "crop_loss", "animal_health"],
+  "eligibility": {
+    "any": [
+      { "field": "cultivates", "op": "eq", "value": true,
+        "label": { "en": "You are a cultivator (owner, tenant or sharecropper)", "hi": "आप खेती करते हैं (मालिक, किरायेदार या बटाईदार)", "as": "আপুনি খেতিয়ক (মালিক, ভাড়াতীয়া বা আধিয়াৰ)" } },
+      { "field": "has_livestock", "op": "eq", "value": true,
+        "label": { "en": "You rear livestock (KCC for animal husbandry)", "hi": "आप पशुपालन करते हैं (पशुपालन KCC)", "as": "আপুনি পশুপালন কৰে (পশুপালন KCC)" } }
+    ],
+    "all": [
+      { "field": "has_bank_account", "op": "eq", "value": true, "soft": true,
+        "label": { "en": "You have a bank account", "hi": "आपका बैंक खाता है", "as": "আপোনাৰ বেংক একাউণ্ট আছে" } }
+    ]
+  },
+  "documents": ["aadhaar", "land_record", "photo", "bank_passbook"],
+  "stacks_with": [
+    { "id": "pmfby", "note": { "en": "KCC stacks with PMFBY: insured KCC loans are protected if the crop fails.", "hi": "KCC और PMFBY साथ चलते हैं: फसल खराब होने पर बीमित KCC ऋण सुरक्षित रहता है।", "as": "KCC আৰু PMFBY একেলগে চলে: শস্য নষ্ট হ'লে বীমাকৃত KCC ঋণ সুৰক্ষিত থাকে।" } },
+    { "id": "pmkisan", "note": { "en": "PM-KISAN beneficiaries get a simplified KCC application.", "hi": "पीएम-किसान लाभार्थियों के लिए सरल KCC आवेदन।", "as": "পিএম-কিষাণ হিতাধিকাৰীৰ বাবে সৰল KCC আবেদন।" } }
+  ],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Apply for KCC at your bank branch", "hi": "अपनी बैंक शाखा में KCC के लिए आवेदन करें", "as": "আপোনাৰ বেংক শাখাত KCC ৰ বাবে আবেদন কৰক" },
+    "kind": "visit", "link": "https://www.myscheme.gov.in/schemes/kcc"
+  }
+}

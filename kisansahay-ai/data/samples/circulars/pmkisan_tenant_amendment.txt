@@ -1,0 +1,28 @@
+SAMPLE CIRCULAR (FICTIONAL — FOR DEMO OF WORKFLOW A ONLY. NOT A REAL GOVERNMENT ORDER.)
+
+Department of Agriculture & Farmers Welfare (demo)
+Circular No. DEMO/2026/17 — Revised eligibility: PM-KISAN (illustrative)
+
+Page 1
+1. Purpose. This circular revises the eligibility conditions of the income-support scheme
+   "PM-KISAN" for the purpose of demonstrating rule ingestion.
+
+2. Eligibility. A farmer family is eligible if ALL of the following hold:
+   (a) the family holds cultivable land recorded in the name of a family member;
+   (b) the landholding is greater than zero hectares;
+   (c) no member of the family paid income tax in the last assessment year;
+   (d) the family has an active bank account (new in this circular).
+
+Page 2
+3. Exclusions. Tenant farmers and sharecroppers who do not hold land in their own name
+   are not eligible under this scheme.
+
+4. Examples.
+   Example 1: Ramesh owns 1.2 hectares, has a bank account and nobody in his family pays income tax. He is eligible.
+   Example 2: Sita cultivates 0.8 hectares as a tenant (land not in her name). She is not eligible.
+   Example 3: Mohan owns 2 hectares but his son paid income tax last year. He is not eligible.
+   Example 5: Arjun owns 1 hectare, pays no income tax, but has no bank account. He is not eligible.
+   Example 4: Lata owns 0.5 hectares and has a bank account; we do not yet know whether anyone in her family pays income tax.
+              She is likely eligible pending that check.
+
+5. Documents. Aadhaar, land record, bank passbook.

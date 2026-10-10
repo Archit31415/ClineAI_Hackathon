@@ -1,0 +1,78 @@
+{
+  "_note": "Human-reviewed prompt bank (per slot, per language) with tap chips. The LLM never writes these. Assamese/Hindi need native-speaker review before demo.",
+  "problem": {
+    "q": { "en": "Tell me your problem. What happened on your farm?", "hi": "अपनी समस्या बताइए। खेत में क्या हुआ?", "as": "আপোনাৰ সমস্যা কওক। পথাৰত কি হ'ল?" },
+    "chips": {
+      "en": [["Crop damaged (hail/flood)", "my crop was damaged by hail yesterday"], ["PM-KISAN not received", "pm-kisan installment not received"], ["Sell my crop", "I want to sell my crop"], ["Sick animal", "my cow is sick"], ["Leaf disease", "spots on leaves"], ["Soil card", "soil card"]],
+      "hi": [["फसल खराब (ओला/बाढ़)", "कल ओलावृष्टि से फसल खराब हुई"], ["पीएम-किसान किस्त नहीं आई", "पीएम किसान किस्त नहीं आई"], ["फसल बेचनी है", "मुझे फसल बेचना है मंडी"], ["पशु बीमार", "मेरी गाय बीमार है"], ["पत्तियों पर धब्बे", "पत्तियों पर धब्बे"], ["मृदा कार्ड", "मृदा कार्ड"]],
+      "as": [["শস্য নষ্ট (শিল/বান)", "কালি শিলাবৃষ্টিত শস্য নষ্ট হ'ল"], ["পিএম-কিষাণ কিস্তি অহা নাই", "pm kisan কিস্তি অহা নাই"], ["শস্য বিক্ৰী", "শস্য বিক্ৰী কৰিব খোজো দাম"], ["পশু বেমাৰ", "মোৰ গৰু বেমাৰ"], ["পাতত দাগ", "পাতত দাগ"], ["মাটি কাৰ্ড", "মাটি কাৰ্ড"]]
+    }
+  },
+  "location": {
+    "q": { "en": "Which district and state are you in?", "hi": "आप किस ज़िले और राज्य में हैं?", "as": "আপুনি কোন জিলা আৰু ৰাজ্যত থাকে?" },
+    "chips": { "*": [["Nagaon, Assam", "Nagaon Assam"], ["Kamrup, Assam", "Kamrup Assam"], ["Lucknow, UP", "Lucknow Uttar Pradesh"], ["Barabanki, UP", "Barabanki Uttar Pradesh"]] }
+  },
+  "crops": {
+    "q": { "en": "Which crop do you grow?", "hi": "आप कौन सी फसल उगाते हैं?", "as": "আপুনি কি শস্য খেতি কৰে?" },
+    "chips": {
+      "en": [["Paddy", "paddy"], ["Wheat", "wheat"], ["Mustard", "mustard"], ["Maize", "maize"]],
+      "hi": [["धान", "धान"], ["गेहूँ", "गेहूँ"], ["सरसों", "सरसों"], ["मक्का", "मक्का"]],
+      "as": [["ধান", "ধান"], ["ঘেঁহু", "ঘেঁহু"], ["সৰিয়হ", "সৰিয়হ"], ["মাকৈ", "মাকৈ"]]
+    }
+  },
+  "land": {
+    "q": { "en": "How much land do you farm? (bigha, acre or hectare)", "hi": "आप कितनी ज़मीन पर खेती करते हैं? (बीघा, एकड़ या हेक्टेयर)", "as": "আপুনি কিমান মাটিত খেতি কৰে? (বিঘা, একৰ বা হেক্টৰ)" },
+    "chips": {
+      "en": [["2 bigha", "2 bigha"], ["1 acre", "1 acre"], ["1.2 hectare", "1.2 hectare"], ["3 acre", "3 acre"]],
+      "hi": [["2 बीघा", "2 बीघा"], ["1 एकड़", "1 एकड़"], ["1.2 हेक्टेयर", "1.2 हेक्टेयर"], ["5 बीघा", "5 बीघा"]],
+      "as": [["২ বিঘা", "২ বিঘা"], ["৫ বিঘা", "৫ বিঘা"], ["১ একৰ", "১ একৰ"], ["১০ বিঘা", "১০ বিঘা"]]
+    }
+  },
+  "loss_when": {
+    "q": { "en": "When did the damage happen?", "hi": "नुकसान कब हुआ?", "as": "ক্ষতি কেতিয়া হৈছিল?" },
+    "chips": {
+      "en": [["Today", "today hail"], ["Yesterday", "yesterday hail"], ["2 days ago", "day before yesterday hail"]],
+      "hi": [["आज", "आज ओला"], ["कल", "कल ओला"], ["परसों", "परसों ओला"]],
+      "as": [["আজি", "আজি শিল"], ["কালি", "কালি শিল"], ["পৰহি", "পৰহি শিল"]]
+    }
+  },
+  "stock": {
+    "q": { "en": "How many quintals do you want to sell?", "hi": "कितने क्विंटल बेचना है?", "as": "কিমান কুইণ্টল বিক্ৰী কৰিব?" },
+    "chips": { "*": [["10 q", "10 quintal"], ["20 q", "20 quintal"], ["50 q", "50 quintal"]] }
+  },
+  "animal": {
+    "q": { "en": "Which animals do you keep, and how many?", "hi": "आप कौन से पशु रखते हैं, कितने?", "as": "আপুনি কি পশু পোহে, কিমান?" },
+    "chips": {
+      "en": [["2 cows", "2 cows"], ["1 buffalo", "1 buffalo"], ["5 goats", "5 goat"]],
+      "hi": [["2 गाय", "2 गाय"], ["1 भैंस", "1 भैंस"], ["5 बकरी", "5 बकरी"]],
+      "as": [["২ টা গৰু", "2 গৰু"], ["১ টা ম'হ", "1 ম'হ"], ["৫ টা ছাগলী", "5 ছাগলী"]]
+    }
+  },
+  "ownership": {
+    "q": { "en": "Is the land in your name, or do you farm on lease/sharecrop?", "hi": "ज़मीन आपके नाम पर है, या ठेके/बटाई पर?", "as": "মাটি আপোনাৰ নামত নে ভাড়া/আধিত খেতি কৰে?" },
+    "chips": {
+      "en": [["My own land", "owner"], ["Lease / rent", "tenant"], ["Sharecrop", "sharecrop"]],
+      "hi": [["अपनी ज़मीन", "owner"], ["ठेके पर", "tenant"], ["बटाई पर", "sharecrop"]],
+      "as": [["নিজৰ মাটি", "owner"], ["ভাড়াত", "tenant"], ["আধিত", "sharecrop"]]
+    }
+  },
+  "category": {
+    "q": { "en": "Which category are you? (needed for some schemes)", "hi": "आपकी श्रेणी क्या है? (कुछ योजनाओं के लिए)", "as": "আপোনাৰ শ্ৰেণী কি? (কিছুমান আঁচনিৰ বাবে)" },
+    "chips": { "*": [["General", "general"], ["OBC", "obc"], ["SC", "sc"], ["ST", "st"]] }
+  },
+  "bank": {
+    "q": { "en": "Do you have a bank account linked to Aadhaar?", "hi": "क्या आपका आधार से जुड़ा बैंक खाता है?", "as": "আপোনাৰ আধাৰৰ সৈতে সংযুক্ত বেংক একাউণ্ট আছে নে?" },
+    "chips": {
+      "en": [["Yes, linked", "yes"], ["Account, not linked", "account not linked"], ["No account", "no"]],
+      "hi": [["हाँ, जुड़ा है", "हाँ"], ["खाता है, जुड़ा नहीं", "account not linked"], ["खाता नहीं", "नहीं"]],
+      "as": [["হয়, সংযুক্ত", "হয়"], ["একাউণ্ট আছে, সংযুক্ত নহয়", "account not linked"], ["একাউণ্ট নাই", "নাই"]]
+    }
+  },
+  "_confirm_chips": {
+    "en": [["✓ Correct", "yes"], ["✗ Fix it", "no"]],
+    "hi": [["✓ सही है", "हाँ"], ["✗ ठीक करें", "नहीं"]],
+    "as": [["✓ শুদ্ধ", "হয়"], ["✗ শুধৰাওক", "নহয়"]]
+  },
+  "_done": { "en": "Thank you. I'm preparing your Farm Action Plan now.", "hi": "धन्यवाद। मैं अभी आपकी खेती कार्य योजना बना रहा हूँ।", "as": "ধন্যবাদ। মই এতিয়া আপোনাৰ খেতিৰ কাৰ্য পৰিকল্পনা প্ৰস্তুত কৰিছো।" },
+  "_fix": { "en": "No problem. Please say or type the correct details.", "hi": "कोई बात नहीं। कृपया सही जानकारी बोलें या लिखें।", "as": "কোনো কথা নাই। অনুগ্ৰহ কৰি শুদ্ধ তথ্য কওক বা লিখক।" }
+}

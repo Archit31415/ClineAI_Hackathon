@@ -1,0 +1,35 @@
+{
+  "_note": "Keyword -> feature id map for the no-LLM path (typed/voice symptoms). Lowercase substrings in en/hi/as.",
+  "crop": {
+    "leaf_spots": ["spot", "spots", "धब्बे", "धब्बा", "দাগ"],
+    "diamond_lesions": ["diamond", "spindle", "eye-shaped", "eye shaped", "हीरे", "আঁখিৰ দৰে"],
+    "grey_centre_brown_margin": ["grey centre", "gray center", "grey center", "स्लेटी", "ধোঁৱাবৰণীয়া"],
+    "yellowing_from_tip": ["yellow tip", "tip yellow", "tips yellow", "नोक", "আগ হালধীয়া"],
+    "wavy_yellow_margin": ["wavy", "edge drying", "leaf edge yellow", "लहरदार", "ঢৌ"],
+    "bacterial_ooze": ["ooze", "milky", "रिसाव", "ৰস"],
+    "brown_oval_spots": ["brown spot", "brown spots", "oval", "भूरे धब्बे", "মুগা দাগ"],
+    "yellow_halo": ["halo", "yellow ring", "पीला घेरा", "আঙঠি"],
+    "hopper_burn_patches": ["patches drying", "circular patch", "hopper burn", "round patches", "गोल सूखे", "ঘূৰণীয়া শুকান"],
+    "insects_at_base": ["insects at base", "hopper", "insect", "कीट", "फुदका", "পোক"],
+    "orange_pustules": ["orange powder", "rust", "pustule", "रतुआ", "नारंगी", "কমলা"],
+    "yellow_stripes": ["yellow stripe", "stripes", "पीली धारियाँ", "ডাৰি"],
+    "whole_plant_yellow": ["whole plant yellow", "plants yellow", "yellowing", "पीला पड़", "पीलापन", "হালধীয়া"],
+    "stunted_growth": ["stunted", "not growing", "बढ़वार", "বৃদ্ধি কম"]
+  },
+  "livestock": {
+    "fever": ["fever", "hot body", "temperature", "बुखार", "জ্বৰ"],
+    "skin_nodules": ["nodule", "lump", "lumps", "गांठ", "गाँठ", "গুটি"],
+    "not_eating": ["not eating", "off feed", "no appetite", "खाना नहीं", "চাৰা নাখায়", "খোৱা নাই"],
+    "reduced_milk": ["less milk", "milk reduced", "milk dropped", "दूध कम", "গাখীৰ কম"],
+    "cannot_stand": ["cannot stand", "can't stand", "lying down", "unable to stand", "खड़ा नहीं", "থিয় হ'ব পৰা নাই"],
+    "bloody_discharge": ["blood", "bloody", "खून", "তেজ"],
+    "udder_swelling": ["udder swollen", "swollen udder", "hard udder", "थन", "উধান"],
+    "milk_change": ["clots", "watery milk", "milk clot", "थक्के", "দলা"],
+    "bloated_left_abdomen": ["bloat", "bloated", "swollen belly", "अफारा", "पेट फूल", "পেট ফুলা"],
+    "sudden_death_herd": ["died suddenly", "sudden death", "अचानक मौत", "হঠাৎ মৃত্যু"],
+    "mouth_blisters": ["blister", "drooling", "छाले", "लार", "ফোঁহা"],
+    "foot_lesions": ["limping", "foot sore", "hoof", "खुर", "লংড়া", "খুৰা"],
+    "diarrhoea": ["diarrhoea", "diarrhea", "loose dung", "दस्त", "পাতল গোবৰ"],
+    "cough_nasal_discharge": ["cough", "nasal", "खाँसी", "नाक", "কাহ"]
+  }
+}

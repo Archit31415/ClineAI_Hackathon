@@ -1,0 +1,19 @@
+{
+  "_note": "Approximate district centroids used when GPS is not shared. Verify before production use.",
+  "Assam": {
+    "Nagaon": { "lat": 26.35, "lng": 92.68 },
+    "Kamrup": { "lat": 26.18, "lng": 91.73 },
+    "Goalpara": { "lat": 26.17, "lng": 90.62 },
+    "Jorhat": { "lat": 26.75, "lng": 94.22 },
+    "Barpeta": { "lat": 26.32, "lng": 91.0 },
+    "Morigaon": { "lat": 26.25, "lng": 92.34 }
+  },
+  "Uttar Pradesh": {
+    "Lucknow": { "lat": 26.85, "lng": 80.95 },
+    "Barabanki": { "lat": 26.93, "lng": 81.19 },
+    "Sitapur": { "lat": 27.57, "lng": 80.68 },
+    "Kanpur": { "lat": 26.45, "lng": 80.33 },
+    "Unnao": { "lat": 26.55, "lng": 80.49 },
+    "Hardoi": { "lat": 27.4, "lng": 80.13 }
+  }
+}

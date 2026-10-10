@@ -1,0 +1,19 @@
+{
+  "id": "kcc_application",
+  "scheme_id": "kcc",
+  "title": "Kisan Credit Card application (draft data for the bank form)",
+  "source": { "url": "https://www.myscheme.gov.in/schemes/kcc", "verified_on": "TODO_VERIFY" },
+  "fields": [
+    { "key": "applicant_name", "label": "Applicant name", "type": "string", "required": true, "from": "name" },
+    { "key": "state", "label": "State", "type": "string", "required": true, "from": "state" },
+    { "key": "district", "label": "District", "type": "string", "required": true, "from": "district" },
+    { "key": "land_hectares", "label": "Land cultivated (ha)", "type": "number", "required": true, "from": "land_hectares", "validate": "positive" },
+    { "key": "land_ownership", "label": "Ownership", "type": "enum", "options": ["owner", "tenant", "sharecropper"], "required": true, "from": "land_ownership" },
+    { "key": "crops", "label": "Crops grown", "type": "string", "required": true, "from": "crops" },
+    { "key": "category", "label": "Social category", "type": "enum", "options": ["general", "obc", "sc", "st"], "required": false, "from": "category" },
+    { "key": "has_bank_account", "label": "Existing bank account", "type": "boolean", "required": true, "from": "has_bank_account" },
+    { "key": "bank_ifsc", "label": "Bank IFSC", "type": "string", "required": false, "validate": "ifsc" },
+    { "key": "existing_pmkisan", "label": "PM-KISAN beneficiary", "type": "boolean", "required": false, "from": "_has_pmkisan" }
+  ],
+  "required_documents": ["aadhaar", "land_record", "photo", "bank_passbook"]
+}

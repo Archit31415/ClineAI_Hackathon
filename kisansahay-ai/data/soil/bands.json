@@ -1,0 +1,45 @@
+{
+  "_source": { "label": "Soil Health Card rating bands (illustrative; verify against soilhealth.dac.gov.in / state SAU)", "url": "https://soilhealth.dac.gov.in", "verified_on": "TODO_VERIFY" },
+  "params": {
+    "pH": { "unit": "", "bands": [
+      { "max": 5.5, "band": "acidic", "note": { "en": "Strongly acidic: liming may help; ask the agriculture office for the lime dose.", "hi": "अत्यधिक अम्लीय: चूना मदद कर सकता है; मात्रा कृषि कार्यालय से पूछें।", "as": "অতি অম্লীয়: চূণে সহায় কৰিব পাৰে; পৰিমাণ কৃষি কাৰ্যালয়ক সোধক।" } },
+      { "max": 6.5, "band": "slightly_acidic", "note": { "en": "Slightly acidic: fine for most crops including paddy.", "hi": "थोड़ा अम्लीय: धान सहित अधिकांश फसलों के लिए ठीक।", "as": "অলপ অম্লীয়: ধানকে ধৰি বেছিভাগ শস্যৰ বাবে ঠিক।" } },
+      { "max": 7.5, "band": "neutral", "note": { "en": "Neutral: ideal range.", "hi": "उदासीन: आदर्श सीमा।", "as": "নিৰপেক্ষ: আদৰ্শ সীমা।" } },
+      { "max": 8.5, "band": "slightly_alkaline", "note": { "en": "Slightly alkaline: watch zinc and iron availability.", "hi": "थोड़ा क्षारीय: जिंक और आयरन की उपलब्धता पर ध्यान दें।", "as": "অলপ ক্ষাৰীয়: জিংক আৰু লোৰ উপলব্ধতালৈ লক্ষ্য ৰাখক।" } },
+      { "max": 99, "band": "alkaline", "note": { "en": "Alkaline/sodic: needs reclamation advice (e.g. gypsum) from the agriculture office.", "hi": "क्षारीय/सोडिक: सुधार (जैसे जिप्सम) के लिए कृषि कार्यालय से सलाह लें।", "as": "ক্ষাৰীয়: উন্নতিৰ (যেনে জিপছাম) বাবে কৃষি কাৰ্যালয়ৰ পৰামৰ্শ লওক।" } }
+    ]},
+    "EC": { "unit": "dS/m", "bands": [
+      { "max": 1, "band": "normal", "note": { "en": "Salt level normal.", "hi": "लवण स्तर सामान्य।", "as": "নিমখৰ মাত্ৰা স্বাভাৱিক।" } },
+      { "max": 3, "band": "moderate", "note": { "en": "Some salinity: sensitive crops may suffer.", "hi": "कुछ लवणता: संवेदनशील फसलें प्रभावित हो सकती हैं।", "as": "কিছু লৱণতা: সংবেদনশীল শস্য প্ৰভাৱিত হ'ব পাৰে।" } },
+      { "max": 99, "band": "high", "note": { "en": "High salinity: consult the agriculture office.", "hi": "उच्च लवणता: कृषि कार्यालय से परामर्श करें।", "as": "উচ্চ লৱণতা: কৃষি কাৰ্যালয়ৰ পৰামৰ্শ লওক।" } }
+    ]},
+    "OC": { "unit": "%", "bands": [
+      { "max": 0.5, "band": "low", "note": { "en": "Low organic carbon: add compost / FYM / green manure.", "hi": "कम जैविक कार्बन: कम्पोस्ट / गोबर खाद / हरी खाद डालें।", "as": "কম জৈৱিক কাৰ্বন: কম্পোষ্ট / গোবৰ সাৰ / সেউজ সাৰ দিয়ক।" } },
+      { "max": 0.75, "band": "medium", "note": { "en": "Medium organic carbon: keep adding organic matter.", "hi": "मध्यम जैविक कार्बन: जैविक पदार्थ डालते रहें।", "as": "মধ্যম জৈৱিক কাৰ্বন: জৈৱিক পদাৰ্থ দি থাকক।" } },
+      { "max": 99, "band": "high", "note": { "en": "Good organic carbon.", "hi": "अच्छा जैविक कार्बन।", "as": "ভাল জৈৱিক কাৰ্বন।" } }
+    ]},
+    "N": { "unit": "kg/ha", "bands": [
+      { "max": 280, "band": "low", "note": { "en": "Nitrogen low: crop needs the full recommended N, in splits.", "hi": "नाइट्रोजन कम: फसल को पूरी अनुशंसित N किस्तों में चाहिए।", "as": "নাইট্ৰ'জেন কম: শস্যক সম্পূৰ্ণ পৰামৰ্শিত N কিস্তিত লাগে।" } },
+      { "max": 560, "band": "medium", "note": { "en": "Nitrogen medium: follow the normal recommendation.", "hi": "नाइट्रोजन मध्यम: सामान्य अनुशंसा मानें।", "as": "নাইট্ৰ'জেন মধ্যম: সাধাৰণ পৰামৰ্শ মানক।" } },
+      { "max": 99999, "band": "high", "note": { "en": "Nitrogen high: you can reduce N; excess N invites pests.", "hi": "नाइट्रोजन अधिक: N घटा सकते हैं; अधिक N से कीट बढ़ते हैं।", "as": "নাইট্ৰ'জেন বেছি: N কমাব পাৰে; বেছি N এ পোক আকৰ্ষণ কৰে।" } }
+    ]},
+    "P": { "unit": "kg/ha", "bands": [
+      { "max": 10, "band": "low", "note": { "en": "Phosphorus low: apply recommended P at sowing.", "hi": "फॉस्फोरस कम: बुवाई पर अनुशंसित P डालें।", "as": "ফছফৰাছ কম: সিঁচাৰ সময়ত পৰামৰ্শিত P দিয়ক।" } },
+      { "max": 25, "band": "medium", "note": { "en": "Phosphorus medium: normal recommendation.", "hi": "फॉस्फोरस मध्यम: सामान्य अनुशंसा।", "as": "ফছফৰাছ মধ্যম: সাধাৰণ পৰামৰ্শ।" } },
+      { "max": 99999, "band": "high", "note": { "en": "Phosphorus high: P can be reduced.", "hi": "फॉस्फोरस अधिक: P घटाया जा सकता है।", "as": "ফছফৰাছ বেছি: P কমাব পাৰি।" } }
+    ]},
+    "K": { "unit": "kg/ha", "bands": [
+      { "max": 110, "band": "low", "note": { "en": "Potassium low: apply recommended K.", "hi": "पोटाश कम: अनुशंसित K डालें।", "as": "পটাছ কম: পৰামৰ্শিত K দিয়ক।" } },
+      { "max": 280, "band": "medium", "note": { "en": "Potassium medium: normal recommendation.", "hi": "पोटाश मध्यम: सामान्य अनुशंसा।", "as": "পটাছ মধ্যম: সাধাৰণ পৰামৰ্শ।" } },
+      { "max": 99999, "band": "high", "note": { "en": "Potassium high: K can be reduced.", "hi": "पोटाश अधिक: K घटाया जा सकता है।", "as": "পটাছ বেছি: K কমাব পাৰি।" } }
+    ]},
+    "S": { "unit": "ppm", "bands": [
+      { "max": 10, "band": "deficient", "note": { "en": "Sulphur deficient: ask about a sulphur source.", "hi": "सल्फर की कमी: सल्फर स्रोत के बारे में पूछें।", "as": "ছালফাৰৰ অভাৱ: ছালফাৰৰ উৎসৰ বিষয়ে সোধক।" } },
+      { "max": 99999, "band": "sufficient", "note": { "en": "Sulphur sufficient.", "hi": "सल्फर पर्याप्त।", "as": "ছালফাৰ যথেষ্ট।" } }
+    ]},
+    "Zn": { "unit": "ppm", "bands": [
+      { "max": 0.6, "band": "deficient", "note": { "en": "Zinc deficient: common in paddy; ask about zinc application.", "hi": "जिंक की कमी: धान में आम; जिंक के बारे में पूछें।", "as": "জিংকৰ অভাৱ: ধানত সাধাৰণ; জিংকৰ বিষয়ে সোধক।" } },
+      { "max": 99999, "band": "sufficient", "note": { "en": "Zinc sufficient.", "hi": "जिंक पर्याप्त।", "as": "জিংক যথেষ্ট।" } }
+    ]}
+  }
+}

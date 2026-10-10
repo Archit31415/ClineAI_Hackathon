@@ -1,0 +1,27 @@
+{
+  "_source": { "label": "Illustrative crop stage windows (days after sowing/transplanting); verify with ICAR / SAU package of practices", "url": "https://icar.org.in", "verified_on": "TODO_VERIFY" },
+  "default_sowing": { "paddy": { "kharif": "07-05" }, "wheat": { "rabi": "11-15" }, "mustard": { "rabi": "10-20" } },
+  "crops": {
+    "paddy": [
+      { "stage": "nursery", "from": 0, "to": 25 },
+      { "stage": "tillering", "from": 26, "to": 60 },
+      { "stage": "flowering", "from": 61, "to": 95 },
+      { "stage": "grain_filling", "from": 96, "to": 120 },
+      { "stage": "harvest", "from": 121, "to": 160 }
+    ],
+    "wheat": [
+      { "stage": "germination", "from": 0, "to": 20 },
+      { "stage": "tillering", "from": 21, "to": 60 },
+      { "stage": "flowering", "from": 61, "to": 95 },
+      { "stage": "grain_filling", "from": 96, "to": 125 },
+      { "stage": "harvest", "from": 126, "to": 160 }
+    ],
+    "mustard": [
+      { "stage": "germination", "from": 0, "to": 15 },
+      { "stage": "vegetative", "from": 16, "to": 45 },
+      { "stage": "flowering", "from": 46, "to": 80 },
+      { "stage": "pod_filling", "from": 81, "to": 110 },
+      { "stage": "harvest", "from": 111, "to": 140 }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "aadhaar": {
+    "name": { "en": "Aadhaar card", "hi": "आधार कार्ड", "as": "আধাৰ কাৰ্ড" },
+    "where_to_get": { "en": "UIDAI / nearest Aadhaar centre or CSC", "hi": "UIDAI / नज़दीकी आधार केंद्र या CSC", "as": "UIDAI / ওচৰৰ আধাৰ কেন্দ্ৰ বা CSC" }
+  },
+  "land_record": {
+    "name": { "en": "Land record (khatauni / jamabandi / patta)", "hi": "भूमि अभिलेख (खतौनी / जमाबंदी)", "as": "মাটিৰ নথি (জমাবন্দী / পট্টা)" },
+    "where_to_get": { "en": "Revenue office / state land-records portal", "hi": "राजस्व कार्यालय / राज्य भू-अभिलेख पोर्टल", "as": "ৰাজহ কাৰ্যালয় / ৰাজ্যৰ ভূমি নথি প'ৰ্টেল" }
+  },
+  "bank_passbook": {
+    "name": { "en": "Bank passbook (account linked to Aadhaar)", "hi": "बैंक पासबुक (आधार से जुड़ा खाता)", "as": "বেংক পাছবুক (আধাৰৰ সৈতে সংযুক্ত একাউণ্ট)" },
+    "where_to_get": { "en": "Your bank branch", "hi": "आपकी बैंक शाखा", "as": "আপোনাৰ বেংক শাখা" }
+  },
+  "sowing_certificate": {
+    "name": { "en": "Sowing certificate / crop declaration", "hi": "बुवाई प्रमाणपत्र / फसल घोषणा", "as": "বীজ সিঁচাৰ প্ৰমাণপত্ৰ / শস্য ঘোষণা" },
+    "where_to_get": { "en": "Patwari / village agriculture officer", "hi": "पटवारी / ग्राम कृषि अधिकारी", "as": "মৌজাদাৰ / গাঁও কৃষি বিষয়া" }
+  },
+  "tenancy_agreement": {
+    "name": { "en": "Tenancy / sharecropping agreement (if not owner)", "hi": "किरायेदारी / बटाई अनुबंध (यदि मालिक नहीं)", "as": "আধিয়াৰ / ভাড়া চুক্তি (যদি মালিক নহয়)" },
+    "where_to_get": { "en": "Landowner + panchayat attestation", "hi": "भूमि मालिक + पंचायत सत्यापन", "as": "মাটিৰ মালিক + পঞ্চায়তৰ প্ৰমাণ" }
+  },
+  "loss_photos": {
+    "name": { "en": "Dated photos of the damaged crop", "hi": "क्षतिग्रस्त फसल की तारीख सहित फ़ोटो", "as": "ক্ষতিগ্ৰস্ত শস্যৰ তাৰিখসহ ফটো" },
+    "where_to_get": { "en": "Take them in this app (Claim Assistant)", "hi": "इसी ऐप में लें (दावा सहायक)", "as": "এই এপতে লওক (দাবী সহায়ক)" }
+  },
+  "photo": {
+    "name": { "en": "Passport-size photo", "hi": "पासपोर्ट आकार फ़ोटो", "as": "পাছপ'ৰ্ট আকাৰৰ ফটো" },
+    "where_to_get": { "en": "Any photo studio / CSC", "hi": "कोई भी फ़ोटो स्टूडियो / CSC", "as": "যিকোনো ফটো ষ্টুডিঅ' / CSC" }
+  },
+  "caste_certificate": {
+    "name": { "en": "Caste certificate (for SC/ST/OBC benefit)", "hi": "जाति प्रमाणपत्र (SC/ST/OBC लाभ हेतु)", "as": "জাতিৰ প্ৰমাণপত্ৰ (SC/ST/OBC সুবিধাৰ বাবে)" },
+    "where_to_get": { "en": "Tehsil / circle office", "hi": "तहसील कार्यालय", "as": "চক্ৰ বিষয়াৰ কাৰ্যালয়" }
+  },
+  "machine_quotation": {
+    "name": { "en": "Quotation from an empanelled machinery dealer", "hi": "पंजीकृत मशीनरी डीलर का कोटेशन", "as": "পঞ্জীভুক্ত যন্ত্ৰ বিক্ৰেতাৰ কোটেচন" },
+    "where_to_get": { "en": "Dealer listed on the state agri-machinery portal", "hi": "राज्य कृषि यंत्र पोर्टल पर सूचीबद्ध डीलर", "as": "ৰাজ্যৰ কৃষি যন্ত্ৰ প'ৰ্টেলত থকা বিক্ৰেতা" }
+  },
+  "cluster_membership": {
+    "name": { "en": "Farmer group / cluster membership proof", "hi": "किसान समूह / क्लस्टर सदस्यता प्रमाण", "as": "কৃষক গোট / ক্লাষ্টাৰ সদস্যৰ প্ৰমাণ" },
+    "where_to_get": { "en": "Block agriculture office / group lead", "hi": "ब्लॉक कृषि कार्यालय / समूह प्रमुख", "as": "ব্লক কৃষি কাৰ্যালয় / গোটৰ মুৰব্বী" }
+  },
+  "livestock_proof": {
+    "name": { "en": "Livestock ownership / vaccination record", "hi": "पशु स्वामित्व / टीकाकरण रिकॉर्ड", "as": "পশুধনৰ মালিকানা / টীকাকৰণৰ নথি" },
+    "where_to_get": { "en": "Veterinary dispensary / dairy society", "hi": "पशु चिकित्सालय / डेयरी समिति", "as": "পশু চিকিৎসালয় / গাখীৰ সমিতি" }
+  }
+}

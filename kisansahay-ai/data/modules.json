@@ -1,0 +1,9 @@
+[
+  { "id": "claim",       "tier": "deep",      "enabled": true, "owner": "M3" },
+  { "id": "schemes",     "tier": "deep",      "enabled": true, "owner": "M2" },
+  { "id": "soil_card",   "tier": "working",   "enabled": true, "owner": "M2" },
+  { "id": "mandi",       "tier": "working",   "enabled": true, "owner": "M4" },
+  { "id": "crop_doctor", "tier": "prototype", "enabled": true, "owner": "M1" },
+  { "id": "advisory",    "tier": "prototype", "enabled": true, "owner": "M2" },
+  { "id": "livestock",   "tier": "prototype", "enabled": true, "owner": "M1" }
+]

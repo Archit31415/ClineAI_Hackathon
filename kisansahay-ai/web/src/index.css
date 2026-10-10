@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Bengali", system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  color: #1c1917;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); }
+  100% { box-shadow: 0 0 0 22px rgba(22, 163, 74, 0); }
+}
+.mic-live {
+  animation: pulse-ring 1.2s infinite;
+}

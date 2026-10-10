@@ -1,0 +1,42 @@
+{
+  "id": "pmfby",
+  "name": { "en": "PMFBY (crop insurance)", "hi": "पीएमएफबीवाई (फसल बीमा)", "as": "পিএমএফবিৱাই (শস্য বীমা)" },
+  "benefit_summary": {
+    "en": "Low-premium crop insurance (commonly 2% kharif, 1.5% rabi). Localized losses such as hail must be reported quickly (commonly cited: 72 hours).",
+    "hi": "कम प्रीमियम फसल बीमा (आमतौर पर खरीफ 2%, रबी 1.5%)। ओलावृष्टि जैसे स्थानीय नुकसान की सूचना जल्दी देनी होती है (आमतौर पर 72 घंटे)।",
+    "as": "কম প্ৰিমিয়ামৰ শস্য বীমা (সাধাৰণতে খৰিফ ২%, ৰবি ১.৫%)। শিলাবৃষ্টিৰ দৰে স্থানীয় ক্ষতিৰ খবৰ সোনকালে দিব লাগে (সাধাৰণতে ৭২ ঘণ্টা)।"
+  },
+  "source": { "url": "https://pmfby.gov.in", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["crop_loss"],
+  "eligibility": {
+    "all": [
+      { "field": "cultivates", "op": "eq", "value": true,
+        "label": { "en": "You grow a crop this season", "hi": "आप इस मौसम में फसल उगा रहे हैं", "as": "আপুনি এই বতৰত শস্য খেতি কৰিছে" } },
+      { "field": "land_ownership", "op": "in", "value": ["owner", "tenant", "sharecropper"], "soft": true,
+        "label": { "en": "Owners, tenants and sharecroppers can all enrol", "hi": "मालिक, किरायेदार और बटाईदार सभी नामांकन कर सकते हैं", "as": "মালিক, ভাড়াতীয়া আৰু আধিয়াৰ সকলোৱে নাম ভৰ্তি কৰিব পাৰে" } }
+    ]
+  },
+  "local_checks": [
+    { "en": "Your crop must be notified for your area this season", "hi": "आपकी फसल इस मौसम आपके क्षेत्र के लिए अधिसूचित होनी चाहिए", "as": "আপোনাৰ শস্য এই বতৰত আপোনাৰ এলেকাৰ বাবে অধিসূচিত হ'ব লাগিব" }
+  ],
+  "documents": ["aadhaar", "land_record", "bank_passbook", "sowing_certificate", "tenancy_agreement", "loss_photos"],
+  "stacks_with": [
+    { "id": "kcc", "note": { "en": "KCC borrowers can be covered by PMFBY through the bank; a KCC loan does not block a claim.", "hi": "KCC ऋणी बैंक के ज़रिए PMFBY में कवर हो सकते हैं; KCC ऋण दावे को नहीं रोकता।", "as": "KCC ঋণগ্ৰহীতা বেংকৰ জৰিয়তে PMFBY ত আবৰিত হ'ব পাৰে; KCC ঋণে দাবী বন্ধ নকৰে।" } },
+    { "id": "pmkisan", "note": { "en": "Both can be received together.", "hi": "दोनों एक साथ मिल सकते हैं।", "as": "দুয়োটা একেলগে পাব পাৰি।" } }
+  ],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [
+    { "id": "localized_loss_report", "kind": "after_event", "field": "loss_event.occurred_at", "hours": 72,
+      "applies_if": { "field": "loss_event.type", "op": "in", "value": ["hail", "flood", "other"] },
+      "label": "Report localized loss (commonly cited 72 h; verify)" },
+    { "id": "enrolment_cutoff", "kind": "season_cutoff", "season_field": "season",
+      "dates": { "kharif": "07-31", "rabi": "12-31" },
+      "label": "Enrolment cut-off for the season (verify for your state)" }
+  ],
+  "action": {
+    "label": { "en": "Enrol / confirm PMFBY cover with your bank or CSC", "hi": "बैंक या CSC पर PMFBY नामांकन / कवर की पुष्टि करें", "as": "বেংক বা CSC ত PMFBY নাম ভৰ্তি / আবৰণ নিশ্চিত কৰক" },
+    "kind": "visit", "link": "https://pmfby.gov.in"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "assam_dairy",
+  "state": "Assam",
+  "name": { "en": "Assam dairy development support (state)", "hi": "असम डेयरी विकास सहायता (राज्य)", "as": "অসম গাখীৰ উন্নয়ন সাহায্য (ৰাজ্যিক)" },
+  "benefit_summary": {
+    "en": "State support for dairy farmers through dairy cooperatives (illustrative placeholder; verify current scheme name and benefit with the state AH&V department).",
+    "hi": "डेयरी सहकारी समितियों के ज़रिए डेयरी किसानों को राज्य सहायता (उदाहरण; राज्य पशुपालन विभाग से सत्यापित करें)।",
+    "as": "গাখীৰ সমবায়ৰ জৰিয়তে গাখীৰ উৎপাদকক ৰাজ্যিক সাহায্য (উদাহৰণ; ৰাজ্যৰ পশুপালন বিভাগৰ পৰা পৰীক্ষা কৰক)।"
+  },
+  "source": { "url": "https://ahvd.assam.gov.in", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["animal_health"],
+  "eligibility": {
+    "all": [
+      { "field": "state", "op": "eq", "value": "Assam",
+        "label": { "en": "You live in Assam", "hi": "आप असम में रहते हैं", "as": "আপুনি অসমত থাকে" } },
+      { "field": "has_cattle", "op": "eq", "value": true,
+        "label": { "en": "You rear cattle or buffalo", "hi": "आप गाय/भैंस पालते हैं", "as": "আপুনি গৰু/ম'হ পোহে" } }
+    ]
+  },
+  "documents": ["aadhaar", "bank_passbook", "livestock_proof"],
+  "stacks_with": [
+    { "id": "kcc", "note": { "en": "KCC for animal husbandry can fund feed and care alongside dairy support.", "hi": "पशुपालन KCC डेयरी सहायता के साथ चारे/देखभाल का खर्च उठा सकता है।", "as": "পশুপালন KCC এ গাখীৰ সাহায্যৰ লগতে খাদ্য/যত্নৰ খৰচ বহন কৰিব পাৰে।" } }
+  ],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Ask the veterinary office / dairy cooperative about state dairy support", "hi": "राज्य डेयरी सहायता के बारे में पशु चिकित्सा कार्यालय / डेयरी समिति से पूछें", "as": "ৰাজ্যিক গাখীৰ সাহায্যৰ বিষয়ে পশু চিকিৎসা কাৰ্যালয় / গাখীৰ সমবায়ক সোধক" },
+    "kind": "visit", "link": "https://ahvd.assam.gov.in"
+  }
+}

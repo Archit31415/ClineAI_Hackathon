@@ -1,0 +1,40 @@
+{
+  "request": {
+    "profile": {
+      "lang": "as",
+      "name": "Anita Das",
+      "state": "Assam",
+      "district": "Nagaon",
+      "land_hectares": 0.27,
+      "raw_units": {
+        "value": 2,
+        "unit": "bigha"
+      },
+      "land_ownership": "owner",
+      "crops": [
+        "paddy"
+      ],
+      "season": "kharif",
+      "category": "obc",
+      "pain_point": "crop_loss",
+      "loss_event": {
+        "type": "hail",
+        "occurred_at": "2026-10-09T15:00:00+05:30"
+      },
+      "has_bank_account": true,
+      "aadhaar_seeded": true,
+      "in_cluster_group": true
+    },
+    "input": {
+      "crop": "paddy",
+      "features": [
+        "diamond_lesions",
+        "grey_centre_brown_margin",
+        "leaf_spots"
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok"
+  }
+}

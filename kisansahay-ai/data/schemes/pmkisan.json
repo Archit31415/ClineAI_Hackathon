@@ -1,0 +1,48 @@
+{
+  "id": "pmkisan",
+  "name": { "en": "PM-KISAN (income support)", "hi": "पीएम-किसान (आय सहायता)", "as": "পিএম-কিষাণ (আয় সাহায্য)" },
+  "benefit_summary": {
+    "en": "₹6,000 a year in three instalments to landholding farmer families (verify current amount).",
+    "hi": "भूमिधारक किसान परिवारों को साल में ₹6,000, तीन किस्तों में (वर्तमान राशि सत्यापित करें)।",
+    "as": "মাটিৰ মালিক কৃষক পৰিয়ালক বছৰি ₹৬,০০০, তিনিটা কিস্তিত (বৰ্তমানৰ পৰিমাণ পৰীক্ষা কৰক)।"
+  },
+  "source": { "url": "https://pmkisan.gov.in", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["stuck_payment", "credit"],
+  "eligibility": {
+    "all": [
+      { "field": "land_ownership", "op": "eq", "value": "owner",
+        "label": { "en": "Cultivable land is in your own name", "hi": "खेती की ज़मीन आपके नाम पर है", "as": "খেতিৰ মাটি আপোনাৰ নামত" } },
+      { "field": "land_hectares", "op": "gt", "value": 0,
+        "label": { "en": "You hold some cultivable land", "hi": "आपके पास खेती योग्य भूमि है", "as": "আপোনাৰ খেতিৰ মাটি আছে" } },
+      { "field": "is_income_tax_payer", "op": "eq", "value": false, "soft": true,
+        "label": { "en": "No family member paid income tax last year", "hi": "पिछले साल परिवार में किसी ने आयकर नहीं भरा", "as": "যোৱা বছৰ পৰিয়ালৰ কোনেও আয়কৰ দিয়া নাই" } }
+    ]
+  },
+  "documents": ["aadhaar", "land_record", "bank_passbook"],
+  "stacks_with": [
+    { "id": "kcc", "note": { "en": "PM-KISAN beneficiaries can apply for KCC with a simplified form.", "hi": "पीएम-किसान लाभार्थी सरल फ़ॉर्म से KCC के लिए आवेदन कर सकते हैं।", "as": "পিএম-কিষাণ হিতাধিকাৰীয়ে সৰল ফৰ্মেৰে KCC ৰ বাবে আবেদন কৰিব পাৰে।" } },
+    { "id": "pmfby", "note": { "en": "Income support and crop insurance can both be received.", "hi": "आय सहायता और फसल बीमा दोनों मिल सकते हैं।", "as": "আয় সাহায্য আৰু শস্য বীমা দুয়োটা পাব পাৰি।" } }
+  ],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Register / check PM-KISAN status at CSC or pmkisan.gov.in", "hi": "CSC या pmkisan.gov.in पर पीएम-किसान पंजीकरण/स्थिति जाँचें", "as": "CSC বা pmkisan.gov.in ত পিএম-কিষাণ পঞ্জীয়ন/স্থিতি চাওক" },
+    "kind": "visit", "link": "https://pmkisan.gov.in"
+  },
+  "stuck_payment_checks": [
+    { "id": "ekyc", "field": "ekyc_done", "expect": true,
+      "label": { "en": "e-KYC completed", "hi": "ई-केवाईसी पूरा", "as": "ই-কেৱাইচি সম্পূৰ্ণ" },
+      "fix": { "en": "Complete e-KYC (OTP on the portal or biometric at CSC).", "hi": "ई-केवाईसी पूरा करें (पोर्टल पर OTP या CSC पर बायोमेट्रिक)।", "as": "ই-কেৱাইচি কৰক (প'ৰ্টেলত OTP বা CSC ত বায়'মেট্ৰিক)।" } },
+    { "id": "aadhaar_seeding", "field": "aadhaar_seeded", "expect": true,
+      "label": { "en": "Aadhaar linked (seeded) to bank account", "hi": "आधार बैंक खाते से जुड़ा (सीडेड)", "as": "আধাৰ বেংক একাউণ্টৰ সৈতে সংযুক্ত" },
+      "fix": { "en": "Ask your bank to seed Aadhaar and enable DBT on the account.", "hi": "बैंक से आधार सीडिंग और DBT चालू करवाएँ।", "as": "বেংকক আধাৰ সংযোগ আৰু DBT সক্ৰিয় কৰিবলৈ কওক।" } },
+    { "id": "land_record", "field": "land_record_matches", "expect": true,
+      "label": { "en": "Name matches the land record", "hi": "नाम भूमि अभिलेख से मेल खाता है", "as": "নাম মাটিৰ নথিৰ সৈতে মিলে" },
+      "fix": { "en": "Get land-record seeding / correction done at the revenue office.", "hi": "राजस्व कार्यालय में भूमि अभिलेख सुधार/सीडिंग करवाएँ।", "as": "ৰাজহ কাৰ্যালয়ত মাটিৰ নথি সংশোধন কৰাওক।" } },
+    { "id": "bank", "field": "has_bank_account", "expect": true,
+      "label": { "en": "Active bank account", "hi": "सक्रिय बैंक खाता", "as": "সক্ৰিয় বেংক একাউণ্ট" },
+      "fix": { "en": "Reactivate or open a bank account and update it on the portal.", "hi": "बैंक खाता सक्रिय करें/खोलें और पोर्टल पर अपडेट करें।", "as": "বেংক একাউণ্ট সক্ৰিয় কৰক/খোলক আৰু প'ৰ্টেলত আপডেট কৰক।" } }
+  ]
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+data/weather/cache/
+data/models/
+data/schemes/_drafts/*.json
+!data/schemes/_drafts/.gitkeep

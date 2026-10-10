@@ -1,0 +1,33 @@
+{
+  "id": "smam",
+  "name": { "en": "SMAM (farm machinery subsidy)", "hi": "SMAM (कृषि यंत्र सब्सिडी)", "as": "SMAM (কৃষি যন্ত্ৰ ৰাজসাহায্য)" },
+  "benefit_summary": {
+    "en": "Subsidy on farm machinery; higher share for small/marginal, women and SC/ST farmers (commonly 40–50%; verify state rates).",
+    "hi": "कृषि यंत्रों पर सब्सिडी; छोटे/सीमांत, महिला और SC/ST किसानों को अधिक (आमतौर पर 40–50%; राज्य दर सत्यापित करें)।",
+    "as": "কৃষি যন্ত্ৰত ৰাজসাহায্য; ক্ষুদ্ৰ/প্ৰান্তীয়, মহিলা আৰু SC/ST কৃষকৰ বাবে বেছি (সাধাৰণতে ৪০–৫০%; ৰাজ্যৰ হাৰ পৰীক্ষা কৰক)।"
+  },
+  "source": { "url": "https://agrimachinery.nic.in", "verified_on": "TODO_VERIFY" },
+  "review_status": "draft_unverified",
+  "relevant_pain_points": ["equipment"],
+  "eligibility": {
+    "all": [
+      { "field": "cultivates", "op": "eq", "value": true,
+        "label": { "en": "You are a farmer", "hi": "आप किसान हैं", "as": "আপুনি কৃষক" } },
+      { "field": "land_hectares", "op": "gt", "value": 0,
+        "label": { "en": "You hold cultivable land", "hi": "आपके पास खेती योग्य भूमि है", "as": "আপোনাৰ খেতিৰ মাটি আছে" } }
+    ]
+  },
+  "priority_if": [
+    { "field": "land_hectares", "op": "lte", "value": 2, "label": { "en": "Small/marginal farmers get a higher subsidy share", "hi": "छोटे/सीमांत किसानों को अधिक सब्सिडी", "as": "ক্ষুদ্ৰ/প্ৰান্তীয় কৃষকে বেছি ৰাজসাহায্য পায়" } },
+    { "field": "category", "op": "in", "value": ["sc", "st"], "label": { "en": "SC/ST farmers get a higher subsidy share", "hi": "SC/ST किसानों को अधिक सब्सिडी", "as": "SC/ST কৃষকে বেছি ৰাজসাহায্য পায়" } }
+  ],
+  "documents": ["aadhaar", "land_record", "bank_passbook", "machine_quotation", "caste_certificate"],
+  "stacks_with": [],
+  "conflicts_with": [],
+  "requires": [],
+  "deadline_rules": [],
+  "action": {
+    "label": { "en": "Apply on the state agri-machinery portal (via CSC)", "hi": "राज्य कृषि यंत्र पोर्टल पर आवेदन करें (CSC से)", "as": "ৰাজ্যৰ কৃষি যন্ত্ৰ প'ৰ্টেলত আবেদন কৰক (CSC ৰ জৰিয়তে)" },
+    "kind": "visit", "link": "https://agrimachinery.nic.in"
+  }
+}

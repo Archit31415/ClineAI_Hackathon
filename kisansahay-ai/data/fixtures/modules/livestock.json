@@ -1,0 +1,37 @@
+{
+  "request": {
+    "profile": {
+      "lang": "as",
+      "name": "Kamal Rabha",
+      "state": "Assam",
+      "district": "Kamrup",
+      "land_hectares": 0.5,
+      "land_ownership": "owner",
+      "crops": [
+        "paddy"
+      ],
+      "category": "st",
+      "pain_point": "animal_health",
+      "livestock": [
+        {
+          "species": "cattle",
+          "count": 2
+        }
+      ],
+      "has_bank_account": true
+    },
+    "input": {
+      "species": "cattle",
+      "symptoms_text": "fever and skin nodules",
+      "features": [
+        "fever",
+        "skin_nodules"
+      ]
+    }
+  },
+  "expect": {
+    "body.triage": "vet_now",
+    "body.notifiable_suspect": true,
+    "body.isolate": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "_note": "Rules cite an advisory source; unsourced rules are downgraded to 'info'. Illustrative — verify with IMD Agromet / ICAR.",
+  "rules": [
+    { "id": "delay_spray_rain", "when": { "rain_mm_48h": { "gte": 10 }, "stage": { "in": ["tillering", "flowering", "vegetative", "grain_filling", "pod_filling"] } }, "severity": "act",
+      "text": { "en": "Rain expected in the next 2 days — do not spray today; it will wash off.", "hi": "अगले 2 दिनों में बारिश की संभावना — आज छिड़काव न करें; धुल जाएगा।", "as": "পিছৰ ২ দিনত বৰষুণৰ সম্ভাৱনা — আজি স্প্ৰে নকৰিব; ধুই যাব।" },
+      "source": { "label": "IMD Agromet advisory practice (VERIFY)", "url": "https://mausam.imd.gov.in" } },
+    { "id": "drain_heavy_rain", "when": { "rain_mm_48h": { "gte": 40 } }, "severity": "act",
+      "text": { "en": "Heavy rain forecast — clear field drains and avoid standing water.", "hi": "भारी बारिश का पूर्वानुमान — खेत की नालियाँ साफ़ करें, पानी जमा न होने दें।", "as": "গধুৰ বৰষুণৰ পূৰ্বানুমান — পথাৰৰ নলা পৰিষ্কাৰ কৰক, পানী জমা হ'বলৈ নিদিব।" },
+      "source": { "label": "IMD Agromet advisory practice (VERIFY)", "url": "https://mausam.imd.gov.in" } },
+    { "id": "post_loss_field_work", "when": { "rain_mm_48h": { "gte": 10 }, "has_loss_event": { "eq": true } }, "severity": "watch",
+      "text": { "en": "More rain is coming — take your claim evidence photos before it rains, and delay field work.", "hi": "और बारिश आने वाली है — बारिश से पहले दावे की फ़ोटो लें, खेत का काम टालें।", "as": "আৰু বৰষুণ আহিব — বৰষুণৰ আগতে দাবীৰ ফটো লওক, পথাৰৰ কাম পিছুৱাওক।" },
+      "source": { "label": "Claim evidence guidance (internal)", "url": "https://pmfby.gov.in" } },
+    { "id": "heat_irrigation", "when": { "tmax": { "gte": 36 }, "stage": { "in": ["flowering", "grain_filling", "pod_filling"] } }, "severity": "watch",
+      "text": { "en": "Hot days ahead at a sensitive stage — give light irrigation in the evening if possible.", "hi": "संवेदनशील अवस्था में गर्म दिन — हो सके तो शाम को हल्की सिंचाई करें।", "as": "সংবেদনশীল অৱস্থাত গৰম দিন — পাৰিলে সন্ধিয়া পাতলকৈ পানী দিয়ক।" },
+      "source": { "label": "ICAR heat-stress advisory (VERIFY)", "url": "https://icar.org.in" } },
+    { "id": "wind_no_spray", "when": { "wind_kmph": { "gte": 20 } }, "severity": "watch",
+      "text": { "en": "Strong wind forecast — avoid spraying; drift can harm you and neighbours' crops.", "hi": "तेज़ हवा का पूर्वानुमान — छिड़काव न करें; दवा उड़कर नुकसान कर सकती है।", "as": "প্ৰবল বতাহৰ পূৰ্বানুমান — স্প্ৰে নকৰিব; ঔষধ উৰি গৈ ক্ষতি কৰিব পাৰে।" },
+      "source": { "label": "Safe spraying practice (VERIFY)", "url": "https://ppqs.gov.in" } },
+    { "id": "harvest_dry_window", "when": { "rain_mm_48h": { "lt": 2 }, "stage": { "in": ["harvest"] } }, "severity": "info",
+      "text": { "en": "Dry days ahead — a good window to harvest and dry the produce.", "hi": "सूखे दिन आगे — कटाई और सुखाने का अच्छा समय।", "as": "শুকান দিন আগত — চপোৱা আৰু শুকুওৱাৰ ভাল সময়।" },
+      "source": { "label": "IMD Agromet advisory practice (VERIFY)", "url": "https://mausam.imd.gov.in" } },
+    { "id": "cold_wave_mustard", "when": { "tmin": { "lte": 4 }, "stage": { "in": ["flowering", "pod_filling"] } }, "severity": "watch",
+      "text": { "en": "Very cold night forecast — frost risk; light irrigation can protect the crop.", "hi": "बहुत ठंडी रात का पूर्वानुमान — पाले का खतरा; हल्की सिंचाई फसल बचा सकती है।", "as": "অতি ঠাণ্ডা ৰাতিৰ পূৰ্বানুমান — তুষাৰৰ বিপদ; পাতল জলসিঞ্চনে শস্য ৰক্ষা কৰিব পাৰে।" } }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "_note": "Demo-state mandi (APMC market) names with approximate coordinates. Verify names against data.gov.in 'market' column.",
+  "mandis": [
+    { "name": "Lucknow", "state": "Uttar Pradesh", "district": "Lucknow", "lat": 26.85, "lng": 80.95 },
+    { "name": "Barabanki", "state": "Uttar Pradesh", "district": "Barabanki", "lat": 26.93, "lng": 81.19 },
+    { "name": "Sitapur", "state": "Uttar Pradesh", "district": "Sitapur", "lat": 27.57, "lng": 80.68 },
+    { "name": "Kanpur (Grain)", "state": "Uttar Pradesh", "district": "Kanpur", "lat": 26.47, "lng": 80.35 },
+    { "name": "Unnao", "state": "Uttar Pradesh", "district": "Unnao", "lat": 26.55, "lng": 80.49 },
+    { "name": "Hardoi", "state": "Uttar Pradesh", "district": "Hardoi", "lat": 27.4, "lng": 80.13 },
+    { "name": "Nagaon", "state": "Assam", "district": "Nagaon", "lat": 26.35, "lng": 92.68 },
+    { "name": "Guwahati", "state": "Assam", "district": "Kamrup", "lat": 26.18, "lng": 91.75 },
+    { "name": "Morigaon", "state": "Assam", "district": "Morigaon", "lat": 26.25, "lng": 92.34 },
+    { "name": "Jorhat", "state": "Assam", "district": "Jorhat", "lat": 26.75, "lng": 94.22 }
+  ],
+  "msp": {
+    "_source": "Illustrative MSP reference; verify with CACP / farmer.gov.in before showing",
+    "wheat": { "price": 2425, "season": "Rabi 2025-26 (VERIFY)" },
+    "paddy": { "price": 2369, "season": "Kharif 2025-26 (VERIFY)" },
+    "mustard": { "price": 5950, "season": "Rabi 2025-26 (VERIFY)" }
+  }
+}

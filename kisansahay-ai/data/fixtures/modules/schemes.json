@@ -1,0 +1,35 @@
+{
+  "request": {
+    "profile": {
+      "lang": "hi",
+      "name": "Ramesh Yadav",
+      "state": "Uttar Pradesh",
+      "district": "Lucknow",
+      "land_hectares": 1.2,
+      "land_ownership": "owner",
+      "crops": [
+        "wheat"
+      ],
+      "season": "rabi",
+      "category": "obc",
+      "pain_point": "stuck_payment",
+      "existing_benefits": [
+        "pmkisan"
+      ],
+      "has_bank_account": true,
+      "aadhaar_seeded": false,
+      "ekyc_done": true,
+      "land_record_matches": true,
+      "is_income_tax_payer": false,
+      "stock_to_sell": [
+        {
+          "commodity": "wheat",
+          "quintals": 20
+        }
+      ]
+    }
+  },
+  "expect": {
+    "status": "ok"
+  }
+}

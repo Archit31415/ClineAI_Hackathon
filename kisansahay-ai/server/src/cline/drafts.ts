@@ -40,7 +40,16 @@ export async function extractSource(req: IngestRequest): Promise<{ text: string;
     const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
     return { text: text.slice(0, 60000), kind: "url", label: req.url };
   }
-  throw new Error("provide sample_id, text or url");
+  if (req.pdf_base64) {
+    const buf = Buffer.from(req.pdf_base64, "base64");
+    const raw = buf.toString("latin1");
+    const matches = [...raw.matchAll(/\(([^)]+)\)\s*Tj/g)].map((m) => m[1]);
+    const text = matches.length > 0
+      ? matches.join(" ")
+      : raw.replace(/[\x00-\x1F\x7F-\xFF]/g, " ").replace(/\s+/g, " ");
+    return { text: text.slice(0, 60000), kind: "pdf", label: "uploaded PDF" };
+  }
+  throw new Error("provide sample_id, text, url or pdf_base64");
 }
 
 export function saveDraft(d: DraftRecord): void {

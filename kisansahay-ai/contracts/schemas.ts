@@ -3,8 +3,12 @@
  */
 import { z } from "zod";
 
-export const LangZ = z.enum(["hi", "as", "en"]);
-export const I18nZ = z.object({ hi: z.string(), as: z.string(), en: z.string() });
+export const LangZ = z.enum(["hi", "as", "en", "bn", "mr", "te", "ta", "kn", "ml"]);
+export const I18nZ = z.object({
+  hi: z.string(), as: z.string(), en: z.string(),
+  bn: z.string().optional(), mr: z.string().optional(), te: z.string().optional(),
+  ta: z.string().optional(), kn: z.string().optional(), ml: z.string().optional(),
+});
 export const ModuleIdZ = z.enum([
   "schemes", "claim", "crop_doctor", "soil_card", "mandi", "advisory", "livestock",
 ]);
@@ -266,5 +270,43 @@ export const ClineIngestRequestZ = z.object({
   url: z.string().optional(),
   text: z.string().optional(),
   sample_id: z.string().optional(),
+  pdf_base64: z.string().optional(),
   target_rule_id: z.string().optional(),
+});
+
+/* ---------- API responses ---------- */
+export const InterviewTurnResponseZ = z.object({
+  assistant_text: z.string(),
+  profile: FarmerProfileZ,
+  intents: z.array(ModuleIdZ),
+  next_slot: z.string().nullable(),
+  confirm_needed: z.boolean(),
+  done: z.boolean(),
+  chips: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
+  confirm_text: z.string().optional(),
+  provenance: z.enum(["llm", "scripted"]).optional(),
+});
+
+export const ModuleRegistryEntryZ = z.object({
+  id: ModuleIdZ,
+  tier: TierZ,
+  enabled: z.boolean(),
+  owner: z.string(),
+});
+
+export const ClineTaskStatusZ = z.object({
+  id: z.string(),
+  kind: z.enum(["ingest_rule", "fill_form", "plan"]),
+  status: z.enum(["queued", "running", "done", "failed"]),
+  progress: z.array(z.object({ at: z.string(), msg: z.string() })),
+  result: z.unknown().optional(),
+  error: z.string().optional(),
+  provenance: z.enum(["cline-sdk", "fixture"]).optional(),
+});
+
+export const DossierResponseZ = z.object({
+  pdf_base64: z.string(),
+  whatsapp_text: z.string(),
+  whatsapp_link: z.string(),
+  json: ActionPlanZ,
 });

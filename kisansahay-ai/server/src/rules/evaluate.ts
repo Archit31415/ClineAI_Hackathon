@@ -4,6 +4,8 @@
  */
 import type { FarmerProfile, Lang, Verdict } from "@kisansahay/contracts";
 import type { Condition, SchemeRule } from "./schema";
+import { ALL_LANGS } from "@kisansahay/contracts";
+import { pick } from "../lib/i18n";
 
 export type CondOutcome = "pass" | "fail" | "unknown";
 
@@ -101,13 +103,19 @@ export function evaluateRule(rule: SchemeRule, profile: Partial<FarmerProfile> &
   return { verdict, confidence: Math.round(confidence * 100) / 100, passed, failed, unknown_hard: unknownHard, unknown_soft: unknownSoft };
 }
 
-const NOT = { en: "Not met: ", hi: "पूरा नहीं: ", as: "পূৰণ হোৱা নাই: " } as const;
-const UNK = { en: "Need to know: ", hi: "जानना ज़रूरी: ", as: "জানিব লাগিব: " } as const;
+const NOT: Record<Lang, string> = {
+  en: "Not met: ", hi: "पूरा नहीं: ", as: "পূৰণ হোৱা নাই: ", bn: "পূরণ হয়নি: ", mr: "पूर्ण नाही: ",
+  te: "నెరవేరలేదు: ", ta: "பூர்த்தி ஆகவில்லை: ", kn: "ಪೂರೈಸಿಲ್ಲ: ", ml: "പാലിച്ചില്ല: ",
+};
+const UNK: Record<Lang, string> = {
+  en: "Need to know: ", hi: "जानना ज़रूरी: ", as: "জানিব লাগিব: ", bn: "জানা দরকার: ", mr: "माहिती हवी: ",
+  te: "తెలుసుకోవాలి: ", ta: "தெரிய வேண்டும்: ", kn: "ತಿಳಿಯಬೇಕು: ", ml: "അറിയേണ്ടത്: ",
+};
 
 export function reasonsFor(d: EvalDetail): Record<Lang, string[]> {
-  const out: Record<Lang, string[]> = { en: [], hi: [], as: [] };
-  for (const lang of ["en", "hi", "as"] as Lang[]) {
-    const lbl = (c: Condition) => c.label?.[lang] ?? c.label?.en ?? c.field;
+  const out = Object.fromEntries(ALL_LANGS.map((l) => [l, [] as string[]])) as Record<Lang, string[]>;
+  for (const lang of ALL_LANGS as readonly Lang[]) {
+    const lbl = (c: Condition) => (c.label ? pick(c.label, lang) : c.field);
     out[lang].push(...d.passed.map((c) => `✓ ${lbl(c)}`));
     out[lang].push(...d.failed.map((c) => `✗ ${NOT[lang]}${lbl(c)}`));
     out[lang].push(...[...d.unknown_hard, ...d.unknown_soft].map((c) => `? ${UNK[lang]}${lbl(c)}`));

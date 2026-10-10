@@ -6,6 +6,12 @@ export const LANGS: { id: Lang; label: string; sub: string; bcp47: string }[] = 
   { id: "hi", label: "हिन्दी", sub: "Hindi", bcp47: "hi-IN" },
   { id: "as", label: "অসমীয়া", sub: "Assamese", bcp47: "as-IN" },
   { id: "en", label: "English", sub: "English", bcp47: "en-IN" },
+  { id: "bn", label: "বাংলা", sub: "Bengali", bcp47: "bn-IN" },
+  { id: "mr", label: "मराठी", sub: "Marathi", bcp47: "mr-IN" },
+  { id: "te", label: "తెలుగు", sub: "Telugu", bcp47: "te-IN" },
+  { id: "ta", label: "தமிழ்", sub: "Tamil", bcp47: "ta-IN" },
+  { id: "kn", label: "ಕನ್ನಡ", sub: "Kannada", bcp47: "kn-IN" },
+  { id: "ml", label: "മലയാളം", sub: "Malayalam", bcp47: "ml-IN" },
 ];
 
 export const MODULE_META: Record<ModuleId, { icon: string; name: I18n }> = {

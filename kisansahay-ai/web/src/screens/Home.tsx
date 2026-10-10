@@ -7,10 +7,12 @@ export function LanguagePicker({ onPick }: { onPick: (l: Lang) => void }) {
     <div className="flex min-h-[80vh] flex-col items-center justify-center gap-4">
       <div className="text-6xl">🌾</div>
       <h1 className="text-3xl font-bold text-green-800">KisanSahay · किसान सहाय</h1>
-      <div className="grid w-full max-w-sm gap-3">
+      <p className="text-stone-600 text-center text-sm">Select your language · अपनी भाषा चुनें · আপোনাৰ ভাষা বাছক</p>
+      <div className="grid w-full max-w-lg grid-cols-2 sm:grid-cols-3 gap-3">
         {LANGS.map((l) => (
-          <button key={l.id} onClick={() => onPick(l.id)} className="rounded-2xl bg-white p-5 text-2xl font-bold shadow ring-1 ring-stone-200 hover:ring-green-700">
-            {l.label} <span className="block text-sm font-normal text-stone-500">{l.sub}</span>
+          <button key={l.id} onClick={() => onPick(l.id)} className="rounded-2xl bg-white p-4 text-center font-bold shadow ring-1 ring-stone-200 hover:ring-green-700 hover:bg-green-50 transition">
+            <span className="text-xl block">{l.label}</span>
+            <span className="block text-xs font-normal text-stone-500 mt-0.5">{l.sub}</span>
           </button>
         ))}
       </div>

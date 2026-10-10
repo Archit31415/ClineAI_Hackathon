@@ -12,9 +12,11 @@ All routes validate with Zod (`contracts/schemas.ts`) and return `{ error: { cod
 | `POST /api/plan` | `{profile, results}` | `ActionPlan` (deterministic) |
 | `POST /api/cline/plan` | `{profile, utterance}` | `{task_id}` (Workflow C) |
 | `POST /api/cline/fill` | `{profile, form_id}` | `{task_id}` (Workflow B) |
-| `POST /api/cline/ingest` | `{url}` \| `{text}` \| `{sample_id}` (+ `target_rule_id`) | `{task_id}` (Workflow A) |
+| `POST /api/cline/ingest` | `{url}` \| `{text}` \| `{sample_id}` \| `{pdf_base64}` (+ `target_rule_id`) | `{task_id}` (Workflow A) |
+| `GET /api/cline/samples` | – | list of available circular samples |
 | `GET /api/cline/tasks/:id` | – | `ClineTaskStatus` |
 | `GET /api/cline/drafts` | – | list of pending drafts |
 | `POST /api/cline/ingest/:id/approve` | `{reviewer}` | moves draft into `data/schemes/` |
 | `POST /api/dossier` | `{plan}` | `{pdf_base64, whatsapp_text, whatsapp_link, json}` |
-| `POST /api/stt` | `{audio_base64, mime, lang}` | `{text}` (Whisper, optional) |
+| `GET /api/stt/status` | – | `{provider, model, ready}` |
+| `POST /api/stt` | `{audio_base64, mime, lang}` \| `{pcm_base64, pcm_format, lang}` | `{text, provider}` (Whisper) |

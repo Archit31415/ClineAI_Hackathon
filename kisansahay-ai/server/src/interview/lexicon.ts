@@ -1,90 +1,91 @@
 /**
  * Multilingual lexicon for the scripted slot-filler (Level-2 fallback; no LLM needed).
- * Human-reviewed word lists in en / hi (Devanagari + romanised) / as (Assamese script).
+ * Word lists in en / hi (Devanagari + romanised) / as / bn / mr / te / ta / kn / ml.
+ * Places (all states + ~800 districts in 9 languages) live in data/geo/india.json (see geo/gazetteer.ts).
+ * Non-hi/as/en entries need native-speaker review before production.
  */
-export const STATES: Record<string, string[]> = {
-  Assam: ["assam", "असम", "অসম", "axom"],
-  "Uttar Pradesh": ["uttar pradesh", "up ", "u.p.", "उत्तर प्रदेश", "यूपी", "উত্তৰ প্ৰদেশ"],
-  Bihar: ["bihar", "बिहार", "বিহাৰ"],
-  "West Bengal": ["west bengal", "bengal", "पश्चिम बंगाल", "পশ্চিমবংগ"],
-};
 
-/** district -> state */
-export const DISTRICTS: Record<string, { state: string; words: string[] }> = {
-  Nagaon: { state: "Assam", words: ["nagaon", "nogaon", "नगांव", "नगाँव", "নগাঁও", "নগাওঁ", "নগাও"] },
-  Kamrup: { state: "Assam", words: ["kamrup", "guwahati", "कामरूप", "গুৱাহাটী", "কামৰূপ"] },
-  Goalpara: { state: "Assam", words: ["goalpara", "গোৱালপাৰা"] },
-  Jorhat: { state: "Assam", words: ["jorhat", "যোৰহাট"] },
-  Barpeta: { state: "Assam", words: ["barpeta", "বৰপেটা"] },
-  Morigaon: { state: "Assam", words: ["morigaon", "মৰিগাঁও"] },
-  Lucknow: { state: "Uttar Pradesh", words: ["lucknow", "lakhnau", "लखनऊ", "लखनउ", "लक्नो", "लखनो", "लक्नौ"] },
-  Barabanki: { state: "Uttar Pradesh", words: ["barabanki", "बाराबंकी", "बारबंकी"] },
-  Sitapur: { state: "Uttar Pradesh", words: ["sitapur", "सीतापुर"] },
-  Kanpur: { state: "Uttar Pradesh", words: ["kanpur", "कानपुर"] },
-  Unnao: { state: "Uttar Pradesh", words: ["unnao", "उन्नाव"] },
-  Hardoi: { state: "Uttar Pradesh", words: ["hardoi", "हरदोई"] },
-};
-
+/** Crops: words in all 9 languages. Keys are the internal crop ids used by the modules. */
 export const CROPS: Record<string, string[]> = {
-  paddy: ["paddy", "rice", "dhan", "धान", "चावल", "ধান", "ধান্য", "চাউল"],
-  wheat: ["wheat", "gehu", "gehun", "गेहूं", "गेहूँ", "गेंहू", "गेहू", "गे हूँ", "गे हूं", "ঘেঁহু"],
-  mustard: ["mustard", "sarson", "सरसों", "সৰিয়হ"],
-  maize: ["maize", "corn", "makka", "मक्का", "মাকৈ"],
-  potato: ["potato", "aloo", "आलू", "আলু"],
-  jute: ["jute", "पटसन", "মৰাপাট"],
+  paddy: ["paddy", "rice", "dhan", "धान", "चावल", "ধান", "ধান্য", "চাউল", "চাল", "भात", "भातशेती", "వరి", "ధాన్యం", "நெல்", "அரிசி", "ಭತ್ತ", "ಅಕ್ಕಿ", "നെല്ല്", "നെൽ", "അരി"],
+  wheat: ["wheat", "gehu", "gehun", "गेहूं", "गेहूँ", "गेंहू", "गेहू", "गे हूँ", "गे हूं", "गहू", "ঘেঁহু", "গম", "గోధుమ", "கோதுமை", "ಗೋಧಿ", "ഗോതമ്പ്"],
+  mustard: ["mustard", "sarson", "सरसों", "मोहरी", "সৰিয়হ", "সরিষা", "ఆవాలు", "கடுகு", "ಸಾಸಿವೆ", "കടുക്"],
+  maize: ["maize", "corn", "makka", "मक्का", "मका", "মাকৈ", "ভুট্টা", "మొక్కజొన్న", "மக்காச்சோளம்", "ಮೆಕ್ಕೆಜೋಳ", "ಜೋಳ", "ചോളം"],
+  potato: ["potato", "aloo", "आलू", "बटाटा", "আলু", "బంగాళాదుంప", "உருளைக்கிழங்கு", "ಆಲೂಗಡ್ಡೆ", "ഉരുളക്കിഴങ്ങ്"],
+  jute: ["jute", "पटसन", "জুট", "মৰাপাট", "পাট"],
+  onion: ["onion", "pyaz", "pyaaz", "kanda", "प्याज", "प्याज़", "कांदा", "পিঁয়াজ", "পেঁয়াজ", "ఉల్లి", "வெங்காயம்", "ಈರುಳ್ಳಿ", "ഉള്ളി", "സവാള"],
+  soybean: ["soybean", "soyabean", "soya", "सोयाबीन", "সয়াবিন", "సోయాబీన్", "சோயா", "ಸೋಯಾಬೀನ್", "സോയാബീൻ"],
+  cotton: ["cotton", "kapas", "कपास", "कापूस", "কপাহ", "তুলা", "పత్తి", "பருத்தி", "ಹತ್ತಿ", "പരുത്തി"],
+  sugarcane: ["sugarcane", "ganna", "गन्ना", "ऊस", "কুঁহিয়াৰ", "আখ", "చెరకు", "கரும்பு", "ಕಬ್ಬು", "കരിമ്പ്"],
+  groundnut: ["groundnut", "peanut", "moongphali", "मूंगफली", "शेंगदाणा", "भुईमूग", "চীনাবাদাম", "বাদাম", "వేరుశనగ", "நிலக்கடலை", "கடலை", "ಶೇಂಗಾ", "ಕಡಲೆಕಾಯಿ", "നിലക്കടല"],
+  tomato: ["tomato", "tamatar", "टमाटर", "टोमॅटो", "বিলাহী", "টমেটো", "టమాటా", "தக்காளி", "ಟೊಮೆಟೊ", "തക്കാളി"],
+  chilli: ["chilli", "chili", "mirchi", "मिर्च", "मिरची", "জলকীয়া", "লঙ্কা", "మిరప", "மிளகாய்", "ಮೆಣಸಿನಕಾಯಿ", "മുളക്"],
+  tea: ["tea", "chai", "चाय", "চাহ", "চা", "తేయాకు", "தேயிலை", "ಚಹಾ", "തേയില"],
+  coconut: ["coconut", "nariyal", "नारियल", "नारळ", "নাৰিকল", "নারকেল", "కొబ్బరి", "தென்னை", "தேங்காய்", "ತೆಂಗು", "തെങ്ങ്", "തേങ്ങ"],
+  banana: ["banana", "kela", "केला", "केळी", "কল", "কলা", "అరటి", "வாழை", "ಬಾಳೆ", "വാഴ"],
+  ragi: ["ragi", "finger millet", "nachni", "नाचणी", "मंडुआ", "రాగి", "கேழ்வரகு", "ರಾಗಿ", "മുത്താറി"],
+  jowar: ["jowar", "sorghum", "ज्वार", "ज्वारी", "జొన్న", "சோளம்", "ಜೋಳದ"],
+  pulses: ["pulses", "dal", "tur", "arhar", "chana", "gram", "दाल", "अरहर", "चना", "तूर", "हरभरा", "ডাইল", "ডাল", "కంది", "శనగ", "துவரை", "உளுந்து", "ತೊಗರಿ", "ಕಡಲೆ", "പയർ"],
+  pepper: ["black pepper", "kali mirch", "काली मिर्च", "కాళీ మిరియాలు", "மிளகு", "ಕಾಳುಮೆಣಸು", "കുരുമുളക്"],
+  rubber: ["rubber", "रबर", "রবার", "రబ్బరు", "ரப்பர்", "ರಬ್ಬರ್", "റബ്ബർ"],
 };
 
 export const LOSS_TYPES: Record<string, string[]> = {
-  hail: ["hail", "hailstorm", "ola", "ओला", "ओलावृष्टि", "শিলাবৃষ্টি", "শিল"],
-  flood: ["flood", "baadh", "बाढ़", "बाढ", "বানপানী", "বান"],
-  drought: ["drought", "sookha", "सूखा", "খৰাং"],
-  pest: ["pest", "insect attack", "कीट", "পোক"],
+  hail: ["hail", "hailstorm", "ola", "ओला", "ओलावृष्टि", "गारपीट", "गारपिट", "শিলাবৃষ্টি", "শিল", "শিলা", "వడగండ్ల", "ஆலங்கட்டி", "ಆಲಿಕಲ್ಲು", "ആലിപ്പഴം"],
+  flood: ["flood", "baadh", "बाढ़", "बाढ", "पूर", "বানপানী", "বান", "বন্যা", "వరద", "வெள்ளம்", "ಪ್ರವಾಹ", "ಭಾರಿ ಮಳೆ", "വെള്ളപ്പൊക്കം", "പ്രളയം"],
+  drought: ["drought", "sookha", "सूखा", "दुष्काळ", "খৰাং", "খরা", "కరువు", "வறட்சி", "ಬರ", "വരൾച്ച"],
+  pest: ["pest", "insect attack", "locust", "कीट", "टिड्डी", "कीड", "পোক", "পোকা", "పురుగు", "பூச்சி", "ಕೀಟ", "കീടം"],
 };
 
 export const WHEN_WORDS: { days: number; words: string[] }[] = [
-  { days: 0, words: ["today", "aaj", "आज", "আজি"] },
-  { days: 1, words: ["yesterday", "kal", "कल", "কালি"] },
-  { days: 2, words: ["day before yesterday", "parso", "परसों", "পৰহি"] },
+  { days: 0, words: ["today", "aaj", "आज", "आजही", "আজি", "আজ", "ఈరోజు", "இன்று", "ಇಂದು", "ഇന്ന്"] },
+  { days: 1, words: ["yesterday", "kal", "कल", "काल", "কালি", "গতকাল", "నిన్న", "நேற்று", "ನಿನ್ನೆ", "ഇന്നലെ"] },
+  { days: 2, words: ["day before yesterday", "parso", "परसों", "परवा", "পৰহি", "পরশু", "మొన్న", "நேற்று முன்தினம்", "ಮೊನ್ನೆ", "മിനിഞ്ഞാന്ന്"] },
 ];
 
 export const PAIN: Record<string, string[]> = {
-  stuck_payment: ["installment", "instalment", "kisht", "किस्त", "pm-kisan", "pm kisan", "पीएम किसान", "not received", "नहीं आई", "stuck", "কিস্তি"],
-  sell_produce: ["sell", "bechna", "बेचना", "बेचने", "mandi", "मंडी", "price", "भाव", "বিক্ৰী", "দাম"],
-  soil: ["soil card", "soil health", "मृदा", "मिट्टी", "soil", "মাটি কাৰ্ড", "মাটি পৰীক্ষা"],
-  equipment: ["tractor", "machine", "machinery", "ट्रैक्टर", "मशीन", "যন্ত্ৰ"],
-  credit: ["loan", "credit", "kcc", "कर्ज", "ऋण", "লোন", "ঋণ"],
-  organic: ["organic", "jaivik", "जैविक", "জৈৱিক"],
-  irrigation: ["pump", "irrigation", "solar", "सिंचाई", "पंप", "জলসিঞ্চন", "পাম্প"],
-  animal_health: ["cow", "buffalo", "goat", "cattle", "गाय", "भैंस", "बकरी", "পশু", "গৰু", "ম'হ", "ছাগলী"],
-  disease: ["leaf", "leaves", "spots", "yellow", "पत्ती", "पत्तियों", "धब्बे", "पीली", "পাত", "দাগ", "হালধীয়া"],
+  stuck_payment: ["installment", "instalment", "kisht", "किस्त", "हप्ता", "pm-kisan", "pm kisan", "पीएम किसान", "पीएम किसान", "not received", "नहीं आई", "मिळाला नाही", "stuck", "কিস্তি", "কিস্তি", "వాయిదా", "தவணை", "ಕಂತು", "ഗഡു"],
+  sell_produce: ["sell", "bechna", "बेचना", "बेचने", "विकायचा", "विकणे", "mandi", "मंडी", "बाजारभाव", "price", "भाव", "விற்க", "விலை", "বিক্ৰী", "বিক্রি", "দাম", "అమ్మాలి", "ధర", "ಮಾರಾಟ", "ಬೆಲೆ", "വിൽക്കണം", "വില"],
+  soil: ["soil card", "soil health", "मृदा", "मिट्टी", "माती", "soil", "মাটি কাৰ্ড", "মাটি পৰীক্ষা", "মাটি", "మట్టి", "மண்", "ಮಣ್ಣು", "മണ്ണ്"],
+  equipment: ["tractor", "machine", "machinery", "ट्रैक्टर", "ट्रॅक्टर", "मशीन", "যন্ত্ৰ", "যন্ত্র", "ట్రాక్టర్", "டிராக்டர்", "ಟ್ರ್ಯಾಕ್ಟರ್", "ട്രാക്ടർ"],
+  credit: ["loan", "credit", "kcc", "कर्ज", "कर्ज़", "ऋण", "कर्जमाफी", "লোন", "ঋণ", "రుణం", "கடன்", "ಸಾಲ", "വായ്പ"],
+  organic: ["organic", "jaivik", "जैविक", "सेंद्रिय", "জৈৱিক", "জৈব", "సేంద్రియ", "இயற்கை", "ಸಾವಯವ", "ജൈവ"],
+  irrigation: ["pump", "irrigation", "solar", "सिंचाई", "पंप", "পাম্প", "জলসিঞ্চন", "সেচ", "సాగునీరు", "பாசனம்", "ನೀರಾವರಿ", "ജലസേചനം"],
+  animal_health: ["cow", "buffalo", "goat", "cattle", "calf", "hen", "chicken", "गाय", "भैंस", "बकरी", "वासरू", "म्हशी", "शेळी", "पशु", "গৰু", "গরু", "ম'হ", "মহিষ", "ছাগলী", "ছাগল", "পশু", "ఆవు", "గేదె", "మేక", "పశువు", "பசு", "எருமை", "ஆடு", "ಆಕಳು", "ಹಸು", "ಎಮ್ಮೆ", "ಮೇಕೆ", "ಜಾನುವಾರ", "ಕೋಳಿ", "ಕೊಳಿ", "కోడి", "கோழி", "കോഴി", "कोंबडी", "मुर्गी", "কুকুৰা", "মুরগি", "പശു", "എരുമ", "ആട്"],
+  disease: ["leaf", "leaves", "spots", "yellow", "पत्ती", "पत्तियों", "धब्बे", "पीली", "पाने", "ठिपके", "पिवळी", "পাত", "দাগ", "হালধীয়া", "পাতা", "হলুদ", "ఆకు", "మచ్చలు", "இலை", "புள்ளி", "ಎಲೆ", "ಚುಕ್ಕೆ", "ഇല", "പുള്ളി"],
 };
 
 export const CATEGORY: Record<string, string[]> = {
-  general: ["general", "सामान्य", "সাধাৰণ"],
-  obc: ["obc", "ओबीसी", "পিছপৰা"],
-  sc: ["sc", "scheduled caste", "अनुसूचित जाति", "অনুসূচিত জাতি"],
-  st: ["st", "scheduled tribe", "tribal", "अनुसूचित जनजाति", "जनजाति", "জনজাতি"],
+  general: ["general", "सामान्य", "खुला", "সাধাৰণ", "সাধারণ", "జనరల్", "பொது", "ಸಾಮಾನ್ಯ", "ജനറൽ"],
+  obc: ["obc", "ओबीसी", "इतर मागास", "পিছপৰা", "অনগ্রসর", "బీసీ", "பிற்படுத்தப்பட்ட", "ಹಿಂದುಳಿದ", "പിന്നോക്ക"],
+  sc: ["sc", "scheduled caste", "dalit", "अनुसूचित जाति", "अनुसूचित जाती", "অনুসূচিত জাতি", "তফসিলি জাতি", "షెడ్యూల్డ్ కులం", "ஆதிதிராவிட", "ಪರಿಶಿಷ್ಟ ಜಾತಿ", "പടിക്കജാതി"],
+  st: ["st", "scheduled tribe", "tribal", "adivasi", "अनुसूचित जनजाति", "जनजाति", "आदिवासी", "जमाती", "জনজাতি", "আদিবাসী", "గిరిజన", "பழங்குடி", "ಪರಿಶಿಷ್ಟ ಪಂಗಡ", "പടിക്കവർഗ്ഗ", "ആദിവാസി"],
 };
 
 export const OWNERSHIP: Record<string, string[]> = {
-  owner: ["own", "owner", "my land", "मेरी जमीन", "अपनी", "मालिक", "নিজৰ মাটি", "নিজৰ"],
-  tenant: ["tenant", "lease", "rent", "किराये", "ठेके", "ভাড়া"],
-  sharecropper: ["sharecrop", "batai", "बटाई", "আধি"],
+  owner: ["own", "owner", "my land", "मेरी जमीन", "अपनी", "मालिक", "स्वतःची", "माझी जमीन", "নিজৰ মাটি", "নিজৰ", "নিজের জমি", "సొంత భూమి", "சொந்த நிலம்", "ಸ್ವಂತ ಜಮೀನು", "സ്വന്തം ഭൂമി"],
+  tenant: ["tenant", "lease", "rent", "किराये", "ठेके", "भाडेतत्वावर", "खंडाने", "ভাড়া", "ইজারা", "కౌలు", "குத்தகை", "ಗುತ್ತಿಗೆ", "പാട്ടം"],
+  sharecropper: ["sharecrop", "batai", "बटाई", "अर्धलेपान", "আধি", "বরগা", "పాలు", "பங்கு", "ಪಾಲು", "വാരം"],
 };
 
-export const YES = ["yes", "haan", "ha", "हाँ", "हां", "जी", "হয়", "হয়", "ঠিক", "correct", "sahi", "सही"];
-export const NO = ["no", "nahi", "नहीं", "ना", "নহয়", "নাই", "না"];
+export const YES = ["yes", "haan", "ha", "हाँ", "हां", "जी", "हो", "होय", "হয়", "হয়", "ঠিক", "হ্যাঁ", "అవును", "ஆம்", "ಹೌದು", "അതെ", "ശരി", "correct", "sahi", "सही", "बरोबर", "సరైనది", "சரி", "ಸರಿ"];
+export const NO = ["no", "nahi", "नहीं", "ना", "नाही", "নহয়", "নাই", "না", "కాదు", "లేదు", "இல்லை", "இல்ல", "ಇಲ್ಲ", "ಅಲ್ಲ", "ഇല്ല", "അല്ല"];
 
-/** Native digits -> ASCII (Devanagari + Bengali/Assamese). */
+/** Native digits -> ASCII: Devanagari, Bengali/Assamese, Telugu, Tamil, Kannada, Malayalam. */
 export function normDigits(s: string): string {
-  return s
-    .replace(/[०-९]/g, (d) => String(d.charCodeAt(0) - 0x0966))
-    .replace(/[০-৯]/g, (d) => String(d.charCodeAt(0) - 0x09e6));
+  return s.replace(/[\u0966-\u096f\u09e6-\u09ef\u0c66-\u0c6f\u0be6-\u0bef\u0ce6-\u0cef\u0d66-\u0d6f]/g, (d) => {
+    const cp = d.charCodeAt(0);
+    return String(cp - (cp & ~0xf) - 6);
+  });
 }
 
-/** Number words (small) for spoken land sizes. */
+/** Number words (small) for spoken land sizes / animal counts. */
 export const NUMBER_WORDS: Record<string, number> = {
   one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, ten: 10, half: 0.5,
-  एक: 1, दो: 2, तीन: 3, चार: 4, पांच: 5, पाँच: 5, आधा: 0.5,
-  এক: 1, দুই: 2, দু: 2, তিনি: 3, চাৰি: 4, পাঁচ: 5, আধা: 0.5,
+  एक: 1, दो: 2, तीन: 3, चार: 4, पांच: 5, पाँच: 5, आधा: 0.5, दोन: 2, अर्धा: 0.5, पाच: 5,
+  এক: 1, দুই: 2, দু: 2, তিনি: 3, চাৰি: 4, পাঁচ: 5, আধা: 0.5, তিন: 3, চার: 4,
+  ఒకటి: 1, రెండు: 2, మూడు: 3, నాలుగు: 4, ఐదు: 5, అర: 0.5,
+  ஒன்று: 1, இரண்டு: 2, மூன்று: 3, நான்கு: 4, ஐந்து: 5, அரை: 0.5,
+  ಒಂದು: 1, ಎರಡು: 2, ಮೂರು: 3, ನಾಲ್ಕು: 4, ಐದು: 5, ಅರ್ಧ: 0.5,
+  ഒന്ന്: 1, രണ്ട്: 2, മൂന്ന്: 3, നാല്: 4, അഞ്ച്: 5, അര: 0.5,
 };

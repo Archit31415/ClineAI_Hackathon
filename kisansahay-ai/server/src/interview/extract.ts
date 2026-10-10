@@ -1,24 +1,38 @@
 /**
  * Scripted fact extraction (deterministic, multilingual keyword based). Works without any LLM.
+ * Pulls EVERYTHING it can from any utterance (place, crop, land, loss, animals, stock, category...),
+ * so the interview never re-asks something the farmer already said.
  */
 import type { FarmerProfile, PainPoint } from "@kisansahay/contracts";
+import { findPlace } from "../geo/gazetteer";
 import { addDays, now, toIst } from "../lib/clock";
 import {
-  CATEGORY, CROPS, DISTRICTS, LOSS_TYPES, normDigits, NUMBER_WORDS, OWNERSHIP, PAIN, STATES, WHEN_WORDS,
+  CATEGORY, CROPS, LOSS_TYPES, normDigits, NUMBER_WORDS, OWNERSHIP, PAIN, WHEN_WORDS,
 } from "./lexicon";
-import { toHectares } from "./units";
+import { LAND_UNIT_WORDS, toHectares } from "./units";
 
-const has = (s: string, words: string[]) => words.some((w) => s.includes(w.toLowerCase()));
+const escapeRe = (w: string) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** Latin words match whole words only ("ola" must not match "cola"); Indic words may carry glued case endings. */
+function wordRe(w: string): RegExp {
+  const esc = escapeRe(w.toLowerCase());
+  return /^[\x00-\x7f]+$/.test(w)
+    ? new RegExp(`(^|[^a-z0-9])${esc}($|[^a-z0-9])`)
+    : new RegExp(`(^|[^\\u0900-\\u0d7f])${esc}`);
+}
+export const has = (s: string, words: string[]) => words.some((w) => wordRe(w).test(s));
 const NUM = String.raw`(\d+(?:\.\d+)?)`;
-const EXTRA_NUM: Record<string, number> = { "দুটা": 2, "এটা": 1, "তিনিটা": 3, "দুখন": 2 };
+const EXTRA_NUM: Record<string, number> = { "দুটা": 2, "এটা": 1, "তিনিটা": 3, "দুখন": 2, "দুটো": 2, "একটা": 1 };
 
 function numberBefore(s: string, unitWords: string[]): { value: number; unit: string } | undefined {
-  for (const u of unitWords) {
-    const i = s.indexOf(u.toLowerCase());
-    if (i < 0) continue;
+  for (const u of [...unitWords].sort((a, b) => b.length - a.length)) {
+    // Indic units may be glued to a number word ("দুবিঘা" = two bigha), so search them as substrings.
+    const latin = /^[\x00-\x7f]+$/.test(u);
+    const m = latin ? wordRe(u).exec(s) : (() => { const j = s.indexOf(u); return j < 0 ? null : Object.assign([u], { index: j }); })();
+    if (!m) continue;
+    const i = m.index + m[0].indexOf(u.toLowerCase());
     const before = s.slice(Math.max(0, i - 14), i);
-    const m = new RegExp(`${NUM}\\s*$`).exec(before.trim());
-    if (m) return { value: Number(m[1]), unit: u };
+    const n = new RegExp(`${NUM}\\s*$`).exec(before.trim());
+    if (n) return { value: Number(n[1]), unit: u };
     const words = { ...NUMBER_WORDS, ...EXTRA_NUM };
     // glued forms like "দুবিঘা" or spaced "दो बीघा"
     const hit = Object.keys(words).sort((a, b) => b.length - a.length).find((w) => before.trimEnd().endsWith(w));
@@ -27,26 +41,26 @@ function numberBefore(s: string, unitWords: string[]): { value: number; unit: st
   return undefined;
 }
 
-const LAND_UNITS = ["hectare", "hectares", "ha", "acre", "acres", "bigha", "katha", "kattha", "हेक्टेयर", "एकड़", "बीघा", "कट्ठा", "বিঘা", "কঠা", "হেক্টৰ", "একৰ"];
-const QUINTAL = ["quintal", "quintals", "qtl", "क्विंटल", "कुंतल", "कुन्तल", "কুইণ্টল"];
+const QUINTAL = ["quintal", "quintals", "qtl", "क्विंटल", "कुंतल", "कुन्तल", "কুইণ্টল", "কুইন্টাল", "క్వింటాల్", "குவிண்டால்", "ಕ್ವಿಂಟಾಲ್", "ക്വിന്റൽ"];
 const ANIMALS: Record<string, string[]> = {
-  cattle: ["cow", "cows", "cattle", "गाय", "গৰু"],
-  buffalo: ["buffalo", "भैंस", "ম'হ"],
-  goat: ["goat", "बकरी", "ছাগলী"],
-  poultry: ["hen", "chicken", "मुर्गी", "কুকুৰা"],
+  cattle: ["cow", "cows", "cattle", "calf", "गाय", "गायें", "गायी", "वासरू", "গৰু", "গরু", "ఆవు", "பசு", "ಹಸು", "ಆವು", "പശു"],
+  buffalo: ["buffalo", "भैंस", "म्हशी", "म्हैस", "ম'হ", "মহিষ", "గేదె", "எருமை", "ಎಮ್ಮೆ", "എരുമ"],
+  goat: ["goat", "goats", "बकरी", "शेळी", "ছাগলী", "ছাগল", "మేక", "ஆடு", "ಮೇಕೆ", "ആട്"],
+  poultry: ["hen", "chicken", "poultry", "मुर्गी", "कोंबडी", "কুকুৰা", "মুরগি", "కోడి", "கோழி", "ಕೋಳಿ", "കോഴി"],
 };
 
 export function extractFacts(rawText: string, profile: FarmerProfile): Partial<FarmerProfile> {
   const s = ` ${normDigits(rawText).toLowerCase()} `;
   const out: Partial<FarmerProfile> = {};
 
-  for (const [d, def] of Object.entries(DISTRICTS)) if (has(s, def.words)) { out.district = d; out.state = def.state; break; }
-  if (!out.state) for (const [st, words] of Object.entries(STATES)) if (has(s, words)) { out.state = st; break; }
+  const place = findPlace(rawText, profile.state);
+  if (place.state) out.state = place.state;
+  if (place.district) out.district = place.district;
 
   const crops = Object.entries(CROPS).filter(([, w]) => has(s, w)).map(([c]) => c);
   if (crops.length) out.crops = crops;
 
-  const land = numberBefore(s, LAND_UNITS);
+  const land = numberBefore(s, LAND_UNIT_WORDS);
   if (land) {
     const conv = toHectares(land.value, land.unit, out.state ?? profile.state);
     if (conv) {
@@ -83,9 +97,7 @@ export function extractFacts(rawText: string, profile: FarmerProfile): Partial<F
   }
   if (livestock.length) out.livestock = livestock;
 
-  for (const [c, words] of Object.entries(CATEGORY)) {
-    if (words.some((w) => new RegExp(`(^|[^a-z])${w.toLowerCase()}([^a-z]|$)`).test(s))) { out.category = c as "sc"; break; }
-  }
+  for (const [c, words] of Object.entries(CATEGORY)) if (has(s, words)) { out.category = c as "sc"; break; }
   for (const [o, words] of Object.entries(OWNERSHIP)) if (has(s, words)) { out.land_ownership = o as "owner"; break; }
 
   if (/e-?kyc|ई-?केवाईसी|ই-?কেৱাইচি/.test(s)) out.ekyc_done = !/(not|nahi|नहीं|নাই|নহয়)/.test(s);

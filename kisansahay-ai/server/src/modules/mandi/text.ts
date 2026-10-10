@@ -1,11 +1,11 @@
 import type { I18n, MandiBody } from "@kisansahay/contracts";
-import { t } from "../../lib/i18n";
+import { joinI18n, t } from "../../lib/i18n";
 import { WAIT_DAY_CAP } from "./logic";
 
 type Opt = MandiBody["options"][number];
 
 const NOT_FORECAST = t(" This is a comparison, not a price forecast.", " यह तुलना है, मूल्य पूर्वानुमान नहीं।", " এইটো তুলনা, দামৰ পূৰ্বানুমান নহয়।");
-const join = (a: I18n, b: I18n): I18n => ({ en: a.en + b.en, hi: a.hi + b.hi, as: a.as + b.as });
+const join = (a: I18n, b: I18n): I18n => joinI18n([a, b]);
 const inr = (n: number) => n.toLocaleString("en-IN");
 
 export function reasonText(p: {

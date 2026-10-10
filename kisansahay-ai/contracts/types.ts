@@ -2,8 +2,15 @@
  * KisanSahay-AI shared contracts (technical.md §4).
  * Rule: never rename a field; add fields instead.
  */
-export type Lang = "hi" | "as" | "en";
-export type I18n = Record<Lang, string>;
+/** UI / conversation languages. hi/as/en are fully authored; the others are authored for farmer-facing
+ * strings and fall back to English elsewhere (see pick()). */
+export type Lang = "hi" | "as" | "en" | "bn" | "mr" | "te" | "ta" | "kn" | "ml";
+export const CORE_LANGS = ["en", "hi", "as"] as const;
+export const EXTRA_LANGS = ["bn", "mr", "te", "ta", "kn", "ml"] as const;
+export const ALL_LANGS = [...CORE_LANGS, ...EXTRA_LANGS] as const;
+export type CoreLang = (typeof CORE_LANGS)[number];
+/** en/hi/as are required; the newer languages are optional (missing -> English fallback). */
+export type I18n = Record<CoreLang, string> & Partial<Record<(typeof EXTRA_LANGS)[number], string>>;
 export type Category = "general" | "obc" | "sc" | "st";
 export type ModuleId =
   | "schemes"
@@ -108,7 +115,7 @@ export interface EligibilityResult {
   scheme_name: I18n;
   verdict: Verdict;
   confidence: number;
-  reasons: Record<Lang, string[]>;
+  reasons: Record<CoreLang, string[]> & Partial<Record<Lang, string[]>>;
   missing_fields: string[];
   benefit_summary: I18n;
   documents: DocumentItem[];
@@ -261,4 +268,11 @@ export interface DossierResponse {
   whatsapp_text: string;
   whatsapp_link: string;
   json: ActionPlan;
+}
+export interface ClineIngestRequest {
+  url?: string;
+  text?: string;
+  sample_id?: string;
+  pdf_base64?: string;
+  target_rule_id?: string;
 }

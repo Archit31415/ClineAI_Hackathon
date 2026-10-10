@@ -29,7 +29,9 @@ export async function clineRoutes(app: FastifyInstance): Promise<void> {
 
   app.post("/api/cline/ingest", async (req) => {
     const body = ClineIngestRequestZ.parse(req.body);
-    if (!body.sample_id && !body.text && !body.url) throw new ApiError(400, "invalid_request", "provide sample_id, text or url");
+    if (!body.sample_id && !body.text && !body.url && !body.pdf_base64) {
+      throw new ApiError(400, "invalid_request", "provide sample_id, text, url or pdf_base64");
+    }
     const task_id = createTask("ingest_rule", (progress) => runIngest(body, progress));
     return { task_id };
   });

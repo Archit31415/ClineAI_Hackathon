@@ -3,6 +3,7 @@
  * red flags evaluated first (deterministic). Output text comes ONLY from the catalog.
  */
 import type { I18n } from "@kisansahay/contracts";
+import { joinI18n } from "../lib/i18n";
 
 export interface CatalogEntry {
   id: string;
@@ -50,9 +51,5 @@ export function matchRedFlags(catalog: Catalog, observed: string[]): RedFlag[] {
 
 export function featureNames(catalog: Catalog, ids: string[]): I18n {
   const names = ids.map((id) => catalog.feature_vocab[id]).filter(Boolean);
-  return {
-    en: names.map((n) => n.en).join(", "),
-    hi: names.map((n) => n.hi).join(", "),
-    as: names.map((n) => n.as).join(", "),
-  };
+  return joinI18n(names, ", ");
 }
